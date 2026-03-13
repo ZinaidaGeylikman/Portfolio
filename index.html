@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zinaida Geylikman — Docteure en Linguistique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap">
+<style>
+  :root {
+    --ink: #1a1410;
+    --ink-light: #4a3f35;
+    --parchment: #f7f3ee;
+    --parchment-dark: #ede8e0;
+    --accent: #8b2635;
+    --accent-light: #c94057;
+    --gold: #b8932a;
+    --border: #d4ccc2;
+    --border-light: #e8e2d8;
+    --mono: 'DM Mono', monospace;
+    --serif: 'EB Garamond', Georgia, serif;
+    --display: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(247, 243, 238, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+  }
+
+  .nav-name {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-dl {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: 0.35rem 0.85rem;
+    transition: all 0.2s;
+  }
+
+  .nav-dl:hover {
+    background: var(--accent);
+    color: var(--parchment);
+  }
+
+  /* ─── HEADER / HERO ─── */
+  header {
+    padding-top: 58px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(139,38,53,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 70%, rgba(184,147,42,0.04) 0%, transparent 70%);
+  }
+
+  .header-rule {
+    position: absolute;
+    top: 58px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--gold) 70%, transparent);
+    opacity: 0.4;
+  }
+
+  .header-inner {
+    position: relative;
+    padding: 8vw 4vw 6vw;
+    max-width: 1100px;
+  }
+
+  .header-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .header-label::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(3.2rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.2em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-title {
+    font-family: var(--display);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-bottom: 3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .meta-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .meta-value {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+  }
+
+  .meta-value a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .meta-value a:hover { border-color: var(--accent); }
+
+  .header-themes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .theme-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.75rem;
+    background: var(--parchment-dark);
+  }
+
+  .header-scroll {
+    position: absolute;
+    bottom: 3rem;
+    left: 4vw;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    opacity: 0.6;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .scroll-arrow {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .scroll-arrow span {
+    display: block;
+    width: 1px;
+    height: 8px;
+    background: var(--ink-light);
+    animation: scrollDown 1.5s ease-in-out infinite;
+  }
+
+  .scroll-arrow span:nth-child(2) { animation-delay: 0.2s; }
+  .scroll-arrow span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes scrollDown {
+    0%, 100% { opacity: 0.3; transform: translateY(-2px); }
+    50% { opacity: 1; transform: translateY(2px); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    padding: 6rem 4vw;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    max-width: none;
+    padding: 5rem 4vw;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  h2 em { font-style: italic; color: var(--accent); }
+
+  /* ─── SYNTHÈSE ─── */
+  .synth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .synth-text p {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+
+  .synth-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .synth-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stat-block {
+    border-left: 2px solid var(--accent);
+    padding: 0.8rem 1.2rem;
+    background: var(--parchment-dark);
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-top: 0.2rem;
+  }
+
+  .award-box {
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--gold);
+    background: linear-gradient(135deg, rgba(184,147,42,0.04), transparent);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .award-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .award-text {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .award-text strong {
+    color: var(--gold);
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ─── LANGUES ─── */
+  .lang-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .lang-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .lang-name {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-style: italic;
+    width: 100px;
+    flex-shrink: 0;
+    color: var(--ink);
+  }
+
+  .lang-bar-wrap {
+    flex: 1;
+    height: 4px;
+    background: var(--border-light);
+    position: relative;
+    max-width: 200px;
+  }
+
+  .lang-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    transition: width 1s ease;
+  }
+
+  .lang-level {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    width: 120px;
+    flex-shrink: 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border-light));
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 0.55rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--parchment);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .tl-date {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-role {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-place {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-detail {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .tl-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    color: var(--ink-light);
+    padding: 0.15rem 0.5rem;
+    margin-top: 0.4rem;
+    margin-right: 0.3rem;
+  }
+
+  /* ─── TWO COLUMNS LAYOUT ─── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+
+  .col-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ─── PUBLICATIONS ─── */
+  #publications {
+    background: var(--parchment-dark);
+  }
+
+  .pub-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    align-items: center;
+  }
+
+  .filter-btn {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--ink-light);
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent);
+    color: var(--parchment);
+    border-color: var(--accent);
+  }
+
+  .pub-add-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pub-input {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    border: 1px solid var(--border);
+    background: var(--parchment);
+    color: var(--ink);
+    padding: 0.6rem 1rem;
+    flex: 1;
+    min-width: 200px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .pub-input:focus { border-color: var(--accent); }
+
+  .pub-btn {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--parchment);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .pub-btn:hover { background: var(--accent-light); }
+
+  .pub-btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+
+  .pub-btn.secondary:hover { background: var(--accent); color: var(--parchment); }
+
+  .pub-status {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    padding: 0.6rem 0;
+    min-height: 1.5rem;
+  }
+
+  .pub-section {
+    margin-bottom: 3rem;
+  }
+
+  .pub-section-title {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pub-count {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    font-style: normal;
+    color: var(--ink-light);
+    background: var(--parchment);
+    padding: 0.2rem 0.6rem;
+  }
+
+  .pub-list {
+    list-style: none;
+  }
+
+  .pub-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .pub-item:hover { background: rgba(139,38,53,0.02); }
+
+  .pub-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+    width: 1.5rem;
+    text-align: right;
+  }
+
+  .pub-content {
+    flex: 1;
+  }
+
+  .pub-title {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .pub-ref {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  .pub-ref a {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+  }
+
+  .pub-ref a:hover { text-decoration: underline; }
+
+  .pub-badges {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.4rem;
+  }
+
+  .pub-badge {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border: 1px solid;
+  }
+
+  .badge-award { border-color: var(--gold); color: var(--gold); background: rgba(184,147,42,0.06); }
+  .badge-accepted { border-color: #5a8a5a; color: #4a7a4a; }
+  .badge-prep { border-color: #7a7a9a; color: #6a6a8a; }
+  .badge-new { border-color: var(--accent); color: var(--accent); animation: newPulse 2s ease-in-out 3; }
+
+  @keyframes newPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .pub-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--border);
+    font-size: 0.85rem;
+    padding: 0.2rem;
+    flex-shrink: 0;
+    transition: color 0.2s;
+    line-height: 1;
+    margin-top: 0.2rem;
+  }
+
+  .pub-delete:hover { color: var(--accent); }
+
+  /* ─── FORM OVERLAY ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 20, 16, 0.7);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--parchment);
+    border: 1px solid var(--border);
+    max-width: 600px;
+    width: 100%;
+    padding: 2.5rem;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-title {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+    background: var(--parchment);
+    color: var(--ink);
+    padding: 0.6rem 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-textarea { resize: vertical; min-height: 80px; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--ink-light);
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .modal-close:hover { color: var(--accent); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: var(--parchment-dark);
+  }
+
+  .footer-name {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink-light);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--border);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .synth-grid, .two-col { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    h1 { font-size: 3rem; }
+    .header-meta { gap: 1.2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-name">Z. Geylikman</a>
+  <ul class="nav-links">
+    <li><a href="#synthese">Synthèse</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#enseignement">Enseignement</a></li>
+  </ul>
+  <a href="CV_Geylikman.pdf" download class="nav-dl">↓ Télécharger le CV</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <div class="header-bg"></div>
+  <div class="header-rule"></div>
+  <div class="header-inner">
+    <div class="header-label">Docteure en Linguistique</div>
+    <h1>Zinaida<br><em>Geylikman</em></h1>
+    <p class="header-title">Linguistique historique &amp; sémantique médiévale — EPHE-PSL, Paris</p>
+
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">Contact</span>
+        <span class="meta-value"><a href="mailto:zinaida.geylikman@gmail.com">zinaida.geylikman@gmail.com</a></span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Téléphone</span>
+        <span class="meta-value">06.34.14.49.14</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Localisation</span>
+        <span class="meta-value">Bagneux (92), France</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Profil académique</span>
+        <span class="meta-value"><a href="https://ephe.academia.edu/ZinaidaGeylikman" target="_blank">Academia.edu ↗</a></span>
+      </div>
+    </div>
+
+    <div class="header-themes">
+      <span class="theme-tag">Français médiéval</span>
+      <span class="theme-tag">Sémantique historique</span>
+      <span class="theme-tag">Lexicologie diachronique</span>
+      <span class="theme-tag">Pragmatique historique</span>
+      <span class="theme-tag">Études médiévales</span>
+      <span class="theme-tag">Linguistique de corpus</span>
+    </div>
+  </div>
+  <div class="header-scroll">
+    <div class="scroll-arrow"><span></span><span></span><span></span></div>
+    Défiler
+  </div>
+</header>
+
+<!-- SYNTHÈSE -->
+<section id="synthese" class="fade-in">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Fiche de <em>synthèse</em></h2>
+  </div>
+  <div class="synth-grid">
+    <div class="synth-text">
+      <p>
+        Docteure en linguistique de l'<strong>École Pratique des Hautes Études (EPHE-PSL)</strong>, 
+        mes recherches portent sur la sémantique et la lexicologie historiques du français médiéval, 
+        avec un intérêt particulier pour les dénominations féodales, les noms d'humains et leur évolution 
+        dans la longue durée (IX<sup>e</sup>–XV<sup>e</sup> siècles).
+      </p>
+      <p>
+        Ma thèse, financée par un contrat doctoral et soutenue en 2017, portait sur l'<strong>étude 
+        sémantique de <em>baron</em> et <em>chevalier</em></strong>. Elle a donné lieu à une monographie 
+        publiée chez Honoré Champion, récompensée par le <strong>Prix Bordin 2022</strong> de l'Académie 
+        des Inscriptions et Belles-Lettres.
+      </p>
+      <p>
+        Mes travaux actuels, dans le cadre d'un post-doctorat ANR (projet HumaNs-MF, Université Paris Cité), 
+        s'orientent vers l'étude quantitative des noms d'humains généraux et la sociolinguistique historique 
+        outillée par des méthodes de corpus.
+      </p>
+
+      <div class="award-box">
+        <span class="award-icon">🏅</span>
+        <div class="award-text">
+          <strong>Prix Bordin 2022</strong>
+          Académie des Inscriptions et Belles-Lettres — pour la monographie <em>Baron et chevalier. 
+          Une étude sémantique de noms d'humains dans la société féodale</em>, Honoré Champion, 2022.
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <p style="margin-bottom:0.6rem;"><strong>Langues</strong></p>
+        <div class="lang-grid">
+          <div class="lang-row">
+            <span class="lang-name">Russe</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
+            <span class="lang-level">Langue maternelle</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Français</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
+            <span class="lang-level">C2 · Professionnel</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Anglais</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:83%"></div></div>
+            <span class="lang-level">C1 · Avancé</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Italien</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:67%"></div></div>
+            <span class="lang-level">B2 · Intermédiaire</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Espagnol</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:50%"></div></div>
+            <span class="lang-level">B1 · Intermédiaire</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Allemand</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:25%"></div></div>
+            <span class="lang-level">A2 · Débutant</span>
+          </div>
+          <div class="lang-row">
+            <span class="lang-name">Latin</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:40%"></div></div>
+            <span class="lang-level">Lu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="synth-stats">
+      <div class="stat-block">
+        <div class="stat-num">18</div>
+        <div class="stat-label">Publications (parues &amp; acceptées)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">37</div>
+        <div class="stat-label">Communications scientifiques</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">388</div>
+        <div class="stat-label">Heures d'enseignement (HETD)</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Contrats post-doctoraux</div>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <div class="col-title">Outils</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+          <span class="theme-tag">VS Code</span>
+          <span class="theme-tag">Claude (Anthropic)</span>
+          <span class="theme-tag">TXM</span>
+          <span class="theme-tag">Oxygen XML</span>
+          <span class="theme-tag">AntConc</span>
+          <span class="theme-tag">Zotero</span>
+          <span class="theme-tag">XML-TEI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<div class="section-full fade-in" id="parcours">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>Parcours <em>professionnel</em></h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-title">Recherche</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2023 — 2025 · 24 mois</div>
+            <div class="tl-role">Post-doctorante</div>
+            <div class="tl-place">Université Paris Cité — URP EDA</div>
+            <div class="tl-detail">ANR Access ERC Starting 2023, projet HumaNs-MF</div>
+            <span class="tl-tag">Post-doctorat</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2021 — 2022 · 6 mois</div>
+            <div class="tl-role">Post-doctorante</div>
+            <div class="tl-place">Sorbonne Université — STIH</div>
+            <div class="tl-detail">Projet DFSM (Dictionnaire du français scientifique médiéval). Création de notices lexicographiques, encodage XML.</div>
+            <span class="tl-tag">Post-doctorat</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2021 · 3,5 mois</div>
+            <div class="tl-role">Post-doctorante</div>
+            <div class="tl-place">Université de Caen Normandie — CRISCO</div>
+            <div class="tl-detail">Projet RIN CONDÉ. Révision de la lemmatisation et annotation automatiques, coordination d'équipe.</div>
+            <span class="tl-tag">Post-doctorat</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2018 — 2020 · 7 contrats</div>
+            <div class="tl-role">Chargée de recherche vacataire</div>
+            <div class="tl-place">Université Sorbonne Nouvelle — CLESTHIA</div>
+            <div class="tl-detail">Projet CoDiF. Encodage XML-TEI de textes français du XIII<sup>e</sup> au XXI<sup>e</sup> siècle.</div>
+            <span class="tl-tag">Recherche</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2013 — 2017</div>
+            <div class="tl-role">Doctorante (contrat doctoral)</div>
+            <div class="tl-place">EPHE-PSL — Laboratoire SAPRAT</div>
+            <div class="tl-detail">Thèse sur l'étude sémantique de <em>baron</em> et <em>chevalier</em> (XII<sup>e</sup>–XV<sup>e</sup> siècles). Dir. Joëlle Ducos.</div>
+            <span class="tl-tag">Doctorat</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col-title">Enseignement</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2023 · 6 mois</div>
+            <div class="tl-role">ATER (temps plein, 96h)</div>
+            <div class="tl-place">Université de Caen Normandie — UFR HSS</div>
+            <span class="tl-tag">ATER</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2022 · 6 mois</div>
+            <div class="tl-role">Chargée de cours (78h)</div>
+            <div class="tl-place">Sorbonne Université Lettres — UFR Langue française</div>
+            <span class="tl-tag">Chargée de cours</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2019 — 2020</div>
+            <div class="tl-role">Chargée de cours (39h)</div>
+            <div class="tl-place">Sorbonne Université Lettres — UFR Langue française</div>
+            <span class="tl-tag">Chargée de cours</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2017 — 2018</div>
+            <div class="tl-role">ATER (temps plein, 192h)</div>
+            <div class="tl-place">Sorbonne Université Lettres — UFR Langue française</div>
+            <span class="tl-tag">ATER</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2011 · 6 mois</div>
+            <div class="tl-role">Professeure de FLE</div>
+            <div class="tl-place">Institut français de Saint-Pétersbourg</div>
+            <span class="tl-tag">FLE</span>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2008 — 2011</div>
+            <div class="tl-role">Professeure de FLE</div>
+            <div class="tl-place">Centre de la Langue française (CLF), Saint-Pétersbourg</div>
+            <span class="tl-tag">FLE</span>
+          </div>
+        </div>
+
+        <div style="margin-top:3rem;">
+          <div class="col-title">Formation</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-date">2017</div>
+              <div class="tl-role">Doctorat en Linguistique</div>
+              <div class="tl-place">EPHE-PSL, laboratoire SAPRAT</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-date">2013</div>
+              <div class="tl-role">Master 2 Langue française (Recherche) — Très bien</div>
+              <div class="tl-place">Université Paris IV Sorbonne</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-date">2012</div>
+              <div class="tl-role">Master 1 Langue française (Recherche) — Très bien</div>
+              <div class="tl-place">Université Paris IV Sorbonne</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-date">2011</div>
+              <div class="tl-role">Licence — Traduction et Interprétariat</div>
+              <div class="tl-place">Université d'État de Saint-Pétersbourg</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="section-full fade-in">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Publications <em>&amp; travaux</em></h2>
+    </div>
+
+    <!-- ADD CONTROLS -->
+    <div style="background:var(--parchment);border:1px solid var(--border);padding:1.5rem;margin-bottom:2rem;">
+      <div style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Ajouter une publication</div>
+      <div class="pub-add-row">
+        <input type="text" class="pub-input" id="doi-input" placeholder="DOI (ex: 10.1234/exemple) ou URL" />
+        <button class="pub-btn" onclick="fetchDOI()">Récupérer via DOI</button>
+        <button class="pub-btn secondary" onclick="openModal()">Saisie manuelle</button>
+      </div>
+      <div class="pub-status" id="doi-status"></div>
+    </div>
+
+    <!-- FILTERS -->
+    <div class="pub-controls">
+      <button class="filter-btn active" onclick="filterPubs('all', this)">Tout</button>
+      <button class="filter-btn" onclick="filterPubs('monographie', this)">Monographie</button>
+      <button class="filter-btn" onclick="filterPubs('direction', this)">Directions d'ouvrages</button>
+      <button class="filter-btn" onclick="filterPubs('chapitre', this)">Chapitres</button>
+      <button class="filter-btn" onclick="filterPubs('article', this)">Articles</button>
+      <button class="filter-btn" onclick="filterPubs('actes', this)">Actes</button>
+      <button class="filter-btn" onclick="filterPubs('communication', this)">Communications</button>
+      <button class="filter-btn" onclick="filterPubs('programme', this)">Programmes soumis</button>
+    </div>
+
+    <!-- PUBLICATION LIST (rendered by JS) -->
+    <div id="pub-list-container"></div>
+  </div>
+</section>
+
+<!-- ENSEIGNEMENT -->
+<div class="section-full fade-in" id="enseignement">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Enseignement <em>&amp; activités</em></h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <div class="col-title">Volume horaire par discipline</div>
+        <div style="margin-bottom:1.5rem;font-size:0.9rem;color:var(--ink-light);">Total : <strong style="color:var(--ink)">388 HETD</strong></div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Grammaire &amp; hist. de la langue</span>
+            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;width:${92/388*100}%;background:var(--accent);width:23.7%"></div></div>
+            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">92h</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Ancien français</span>
+            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
+            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">78h</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Signif. &amp; théories ling.</span>
+            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
+            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">78h</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Institution du français</span>
+            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:12.4%"></div></div>
+            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">48h</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Linguistique générale</span>
+            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:6.7%"></div></div>
+            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">26h</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Autres</span>
+            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:17%"></div></div>
+            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">66h</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col-title">Organisation scientifique</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">06/2025 (à venir)</div>
+            <div class="tl-role">Colloque GenreCorpLing</div>
+            <div class="tl-place">Université Paris Cité — co-organisé avec A. Aleksandrova</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">06/2022</div>
+            <div class="tl-role">Colloque DIACHRO X</div>
+            <div class="tl-place">Sorbonne Université — coordinatrice (post)doctorants</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2015 — 2018</div>
+            <div class="tl-role">Atelier Reverdie</div>
+            <div class="tl-place">Sorbonne Université — atelier mensuel de langue française médiévale</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2016 — 2019</div>
+            <div class="tl-role">Journées d'étude « Rythmes d'évolution »</div>
+            <div class="tl-place">Sorbonne Université / EPHE — 2 éditions organisées</div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;">
+          <div class="col-title">Expertises éditoriales</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-date">2024 —</div>
+              <div class="tl-role">Évaluatrice externe</div>
+              <div class="tl-place">Studia Linguistica Romanica (SLR)</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-date">2016 &amp; 2019</div>
+              <div class="tl-role">Direction scientifique d'ouvrages collectifs</div>
+              <div class="tl-place">Paris, L'Harmattan — 2 volumes co-dirigés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Zinaida Geylikman</div>
+  <div class="footer-links">
+    <a href="mailto:zinaida.geylikman@gmail.com">Email</a>
+    <a href="https://ephe.academia.edu/ZinaidaGeylikman" target="_blank">Academia.edu</a>
+    <a href="CV_Geylikman.pdf" download>Télécharger le CV</a>
+  </div>
+  <div class="footer-copy">© 2025</div>
+</footer>
+
+<!-- MODAL AJOUT MANUEL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Ajouter une publication</div>
+    <div class="form-group">
+      <label class="form-label">Catégorie</label>
+      <select class="form-select" id="f-cat">
+        <option value="monographie">Monographie</option>
+        <option value="direction">Direction d'ouvrage</option>
+        <option value="chapitre" selected>Chapitre d'ouvrage</option>
+        <option value="article">Article dans revue à CL</option>
+        <option value="actes">Actes de colloque</option>
+        <option value="communication">Communication</option>
+        <option value="programme">Programme soumis</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Titre</label>
+      <input type="text" class="form-input" id="f-title" placeholder="Titre de la publication" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Auteur(s)</label>
+        <input type="text" class="form-input" id="f-authors" placeholder="Ex: Geylikman Z." />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Année</label>
+        <input type="text" class="form-input" id="f-year" placeholder="2025" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Référence complète (revue, éditeur, pages…)</label>
+      <textarea class="form-textarea" id="f-ref" placeholder="Ex: Zeitschrift für romanische Philologie, 141-1, p. 1-30."></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">DOI / URL</label>
+        <input type="text" class="form-input" id="f-doi" placeholder="10.xxxx/..." />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Statut</label>
+        <select class="form-select" id="f-status">
+          <option value="">Publié</option>
+          <option value="accepted">Accepté</option>
+          <option value="prep">En préparation</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button class="pub-btn secondary" onclick="closeModal()">Annuler</button>
+      <button class="pub-btn" onclick="addManual()">Ajouter</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── PUBLICATION DATA ───────────────────────────────────────────────────
+const defaultPubs = [
+  // MONOGRAPHIE
+  { id:1, cat:'monographie', authors:'Geylikman Z.', year:'2022', title:'Baron et chevalier. Une étude sémantique de noms d\'humains dans la société féodale', ref:'Paris, Honoré Champion.', doi:'', badges:['award'], badgeLabels:{award:'Prix Bordin 2022'} },
+
+  // DIRECTION
+  { id:2, cat:'direction', authors:'Geylikman Z. & Lambert P. (éds.)', year:'2016', title:'Rythmes d\'évolution en français médiéval. Observations d\'après quelques textes littéraires', ref:'Paris, L\'Harmattan.', doi:'' },
+  { id:3, cat:'direction', authors:'Boudes Y., Geylikman Z., Lambert P. & Sanchez A. (éds.)', year:'2019', title:'Rythmes d\'évolution en français médiéval. Observations d\'après quelques textes de savoir', ref:'Paris, L\'Harmattan.', doi:'' },
+  { id:4, cat:'direction', authors:'Paccosi T., Geylikman Z., Passarotti M., Bozia E. (eds.)', year:'en prép.', title:'Open Data for Quantitative Diachronic Linguistics', ref:'Journal of Open Humanities Data.', doi:'', badges:['prep'] },
+
+  // CHAPITRES
+  { id:5, cat:'chapitre', authors:'Geylikman Z. & Parussa G.', year:'en prép.', title:'L\'évolution du système d\'adresse dans la diachronie du français : pronoms et termes d\'adresse', ref:'Dans un volume sur la pragmatique historique du français. Paris, Honoré Champion.', doi:'', badges:['prep'] },
+  { id:6, cat:'chapitre', authors:'Geylikman Z.', year:'accepté', title:'Stop talking as a bourgeois, you are a nobleman: people-related stereotyped comparisons in Medieval French (9th-15th century)', ref:'Dans <em>Negotiating Norms: Generics and stereotypes across contexts</em>, De Gruyter Mouton.', doi:'', badges:['accepted'] },
+  { id:7, cat:'chapitre', authors:'Geylikman Z.', year:'accepté', title:'Nommer l\'humain dans l\'écriture scientifique en français médiéval : comment et pourquoi ? Le cas du Livre des Météores', ref:'Dans <em>Mélanges en l\'honneur de Joëlle Ducos</em>. Paris, Honoré Champion.', doi:'', badges:['accepted'] },
+  { id:8, cat:'chapitre', authors:'Geylikman Z.', year:'à paraître', title:'Le stéréotype nominal lié avec baron et son destin dans la chanson de geste en français médiéval', ref:'Dans <em>Naissance et vie des stéréotypes</em>. Rennes, PUR.', doi:'', badges:['prep'] },
+  { id:9, cat:'chapitre', authors:'Boudes Y. & Geylikman Z.', year:'2019', title:'Introduction', ref:'Dans Boudes/Geylikman/Lambert/Sanchez (éds.), <em>Rythmes d\'évolution en français médiéval. Textes de savoir</em>. Paris, L\'Harmattan, p. 11-20.', doi:'' },
+  { id:10, cat:'chapitre', authors:'Geylikman Z.', year:'2019', title:'Tu parli como ber : le destin de la forme monosyllabique du substantif baron dans la Geste francor', ref:'Dans Dufter/Grübl/Scharinger (éds.), <em>Des parlers d\'oïl à la francophonie</em>. De Gruyter, p. 19-43.', doi:'10.1515/9783110541816-002' },
+  { id:11, cat:'chapitre', authors:'Geylikman Z.', year:'2016', title:'Le sémantisme de chevalier en français médiéval : évolution ou variation entre les genres ?', ref:'Dans Geylikman/Lambert (éds.), <em>Les rythmes d\'évolution en français médiéval. Textes littéraires</em>. Paris, L\'Harmattan, p. 53-172.', doi:'' },
+
+  // ARTICLES
+  { id:12, cat:'article', authors:'Geylikman Z.', year:'2025', title:'The Emergence of personne as a Negative Indefinite in Medieval and Pre-Classical French', ref:'<em>Journal of French Language Studies</em>.', doi:'' },
+  { id:13, cat:'article', authors:'Geylikman Z.', year:'2025', title:'Nul homme en français médiéval : une grammaticalisation qui n\'a jamais eu lieu', ref:'<em>Zeitschrift für romanische Philologie</em>, 141-1.', doi:'10.1515/zrp-2025-0011' },
+  { id:14, cat:'article', authors:'Geylikman Z.', year:'2024', title:'Nom d\'humain général personne en français médiéval : l\'interface sociale de l\'être humain', ref:'<em>l\'Information Grammaticale</em>, 180, p. 17-25.', doi:'10.2143/IG.180.0.3292822' },
+  { id:15, cat:'article', authors:'Geylikman Z.', year:'2022', title:'La norme d\'adresse orale et écrite en français médiéval sur l\'exemple de baron et chevalier', ref:'<em>Linguistique de l\'écrit</em>, numéro thématique 3.', doi:'10.19079/lde.2022.s3.8' },
+  { id:16, cat:'article', authors:'Geylikman Z.', year:'2020', title:'Les noms d\'humains féodaux et la subjectivité de la catégorisation dans un corpus de chroniques en français médiéval', ref:'<em>Langue française</em>, 207, p. 91-106.', doi:'10.3917/lf.207.0091' },
+
+  // ACTES
+  { id:17, cat:'actes', authors:'Geylikman Z.', year:'2018', title:'Bachelier léger en français médiéval : une étude sémantique du figement', ref:'Dans <em>Atti del XXVIII Congresso internazionale di linguistica e filologia romanza</em>, vol. 1, p. 706-718.', doi:'' },
+  { id:18, cat:'actes', authors:'Geylikman Z.', year:'2017', title:'Le sémantisme large dans la Chanson de Roland : le cas du substantif baron', ref:'Dans François/Ridruejo/Siller-Runggaldier (éds.), <em>Actes du XXVII CILPR</em>. Nancy, p. 83-94.', doi:'' },
+
+  // PROGRAMME
+  { id:19, cat:'programme', authors:'Geylikman Z.', year:'2025', title:'Human Nouns and Social CHANGE: a case study of Medieval French (9th-15th century)', ref:'Programme de recherche soumis au financement.', doi:'10.5281/zenodo.15127027' },
+
+  // COMMUNICATIONS (sélection des plus récentes)
+  { id:20, cat:'communication', authors:'Geylikman Z.', year:'2026', title:'Counting butterflies\' matters: lexical frequencies and agency of power. The case of human nouns in Medieval French', ref:'Quantitative Diachronic Linguistics and Cultural Analytics, King\'s College London, 15-16 janv. 2026.', doi:'' },
+  { id:21, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'Stop talking as a bourgeois, you are a nobleman: people-related stereotyped comparisons in Medieval French', ref:'Generics and stereotypes, Leiden University, 5-6 juin 2025.', doi:'' },
+  { id:22, cat:'communication', authors:'Geylikman Z.', year:'2024', title:'General human nouns in Medieval French: borderline grammaticalization?', ref:'LLcD 2024, Sorbonne Université, 9-11 sept. 2024.', doi:'' },
+  { id:23, cat:'communication', authors:'Geylikman Z.', year:'2024', title:'Les termes d\'adresse dans les interactions « homme-femme » sur un corpus de fabliaux en ancien français', ref:'DIACHRO XI, Universidad Complutense de Madrid, 22-24 mai 2024.', doi:'' },
+  { id:24, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'La norme d\'adresse et sa transgression dans quelques textes en français médiéval', ref:'Séminaire de Master de G. Parussa (invitation).', doi:'' },
+  { id:25, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'Quantitative methods on small corpora for historical sociolinguistics: a case study of Old French fabliaux', ref:'Data in Historical Linguistics Seminar, King\'s College London (invitation).', doi:'' },
+];
+
+let publications = JSON.parse(localStorage.getItem('zg_pubs') || 'null') || defaultPubs.map(p => ({...p}));
+let nextId = Math.max(...publications.map(p=>p.id)) + 1;
+let currentFilter = 'all';
+
+const catLabels = {
+  monographie: 'Monographie',
+  direction: 'Directions d\'ouvrages',
+  chapitre: 'Chapitres d\'ouvrages',
+  article: 'Articles dans revues à CL',
+  actes: 'Actes de colloques',
+  communication: 'Communications',
+  programme: 'Programmes soumis au financement',
+};
+
+const catOrder = ['monographie','direction','chapitre','article','actes','programme','communication'];
+
+function savePubs() {
+  try { localStorage.setItem('zg_pubs', JSON.stringify(publications)); } catch(e) {}
+}
+
+function filterPubs(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPubs();
+}
+
+function renderPubs() {
+  const container = document.getElementById('pub-list-container');
+  container.innerHTML = '';
+  const filtered = currentFilter === 'all' ? publications : publications.filter(p => p.cat === currentFilter);
+  const groups = {};
+  catOrder.forEach(cat => {
+    const items = filtered.filter(p => p.cat === cat);
+    if (items.length) groups[cat] = items;
+  });
+
+  if (!Object.keys(groups).length) {
+    container.innerHTML = '<p style="color:var(--ink-light);font-style:italic;padding:2rem 0;">Aucune publication dans cette catégorie.</p>';
+    return;
+  }
+
+  let globalNum = 1;
+  catOrder.forEach(cat => {
+    if (!groups[cat]) return;
+    const section = document.createElement('div');
+    section.className = 'pub-section';
+    section.innerHTML = `<div class="pub-section-title">${catLabels[cat]}<span class="pub-count">${groups[cat].length}</span></div>`;
+    const list = document.createElement('ul');
+    list.className = 'pub-list';
+    groups[cat].forEach(pub => {
+      const li = document.createElement('li');
+      li.className = 'pub-item';
+      li.dataset.cat = pub.cat;
+      li.dataset.id = pub.id;
+
+      let doiHtml = pub.doi ? `<a href="https://doi.org/${pub.doi}" target="_blank">↗ DOI</a>` : '';
+      let badgesHtml = '';
+      if (pub.badges) pub.badges.forEach(b => {
+        const label = pub.badgeLabels && pub.badgeLabels[b] ? pub.badgeLabels[b] : b;
+        badgesHtml += `<span class="pub-badge badge-${b}">${label}</span>`;
+      });
+      if (pub.isNew) badgesHtml += `<span class="pub-badge badge-new">Nouveau</span>`;
+
+      li.innerHTML = `
+        <span class="pub-num">${globalNum}.</span>
+        <div class="pub-content">
+          <div class="pub-title">${pub.title}</div>
+          <div class="pub-ref">${pub.authors} (${pub.year}) — ${pub.ref} ${doiHtml}</div>
+          ${badgesHtml ? `<div class="pub-badges">${badgesHtml}</div>` : ''}
+        </div>
+        <button class="pub-delete" onclick="deletePub(${pub.id})" title="Supprimer">✕</button>
+      `;
+      list.appendChild(li);
+      globalNum++;
+    });
+    section.appendChild(list);
+    container.appendChild(section);
+  });
+}
+
+function deletePub(id) {
+  if (!confirm('Supprimer cette publication ?')) return;
+  publications = publications.filter(p => p.id !== id);
+  savePubs();
+  renderPubs();
+}
+
+async function fetchDOI() {
+  const raw = document.getElementById('doi-input').value.trim();
+  if (!raw) { setStatus('Veuillez entrer un DOI ou une URL.', 'var(--accent)'); return; }
+  
+  let doi = raw;
+  if (doi.startsWith('http')) {
+    const m = doi.match(/10\.\d{4,}\/\S+/);
+    doi = m ? m[0] : null;
+  } else {
+    doi = doi.replace(/^doi:\s*/i, '').trim();
+  }
+
+  if (!doi) { setStatus('Format DOI non reconnu. Essayez la saisie manuelle.', 'var(--accent)'); return; }
+  
+  setStatus('Récupération des métadonnées…');
+  try {
+    const res = await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`);
+    if (!res.ok) throw new Error('DOI non trouvé');
+    const data = await res.json();
+    const w = data.message;
+    
+    const title = (w.title && w.title[0]) || 'Titre inconnu';
+    const authors = w.author ? w.author.map(a => `${a.family || ''} ${(a.given||'').charAt(0)}.`).join(', ') : 'Auteur(s) inconnu(s)';
+    const year = (w.published && w.published['date-parts'] && w.published['date-parts'][0][0]) || '?';
+    const journal = (w['container-title'] && w['container-title'][0]) || '';
+    const volume = w.volume || '';
+    const page = w.page || '';
+    const ref = [journal, volume, page ? `p. ${page}` : ''].filter(Boolean).join(', ') + '.';
+
+    const newPub = {
+      id: nextId++,
+      cat: journal ? 'article' : 'chapitre',
+      authors,
+      year: String(year),
+      title,
+      ref,
+      doi,
+      isNew: true,
+    };
+    publications.push(newPub);
+    savePubs();
+    renderPubs();
+    document.getElementById('doi-input').value = '';
+    setStatus(`✓ Publication ajoutée : « ${title.substring(0,60)}… »`);
+    currentFilter = 'all';
+    document.querySelectorAll('.filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  } catch(e) {
+    setStatus('Impossible de récupérer ce DOI. Vérifiez-le ou utilisez la saisie manuelle.', 'var(--accent)');
+  }
+}
+
+function setStatus(msg, color='var(--gold)') {
+  const el = document.getElementById('doi-status');
+  el.textContent = msg;
+  el.style.color = color;
+}
+
+function openModal() {
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+function addManual() {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { alert('Le titre est obligatoire.'); return; }
+  const statusVal = document.getElementById('f-status').value;
+  const badges = statusVal ? [statusVal] : [];
+  const newPub = {
+    id: nextId++,
+    cat: document.getElementById('f-cat').value,
+    authors: document.getElementById('f-authors').value.trim() || 'Geylikman Z.',
+    year: document.getElementById('f-year').value.trim() || new Date().getFullYear().toString(),
+    title,
+    ref: document.getElementById('f-ref').value.trim(),
+    doi: document.getElementById('f-doi').value.trim().replace(/^https?:\/\/doi\.org\//,''),
+    badges,
+    isNew: true,
+  };
+  publications.push(newPub);
+  savePubs();
+  renderPubs();
+  closeModal();
+  ['f-title','f-authors','f-year','f-ref','f-doi'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-status').value = '';
+  currentFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.getElementById('publications').scrollIntoView({behavior:'smooth'});
+}
+
+// ─── INTERSECTION OBSERVER ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── INIT ───
+renderPubs();
+</script>
+</body>
+</html>
