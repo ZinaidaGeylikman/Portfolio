@@ -8,15 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap">
 <style>
   :root {
-    --ink: #1a1410;
-    --ink-light: #4a3f35;
-    --parchment: #f7f3ee;
-    --parchment-dark: #ede8e0;
-    --accent: #8b2635;
-    --accent-light: #c94057;
-    --gold: #b8932a;
-    --border: #d4ccc2;
-    --border-light: #e8e2d8;
+    --ink: #0f1e2e;
+    --ink-light: #3a526b;
+    --parchment: #f0f4f8;
+    --parchment-dark: #dde5ef;
+    --accent: #1b4f8a;
+    --accent-light: #2e72c2;
+    --gold: #c4923a;
+    --border: #b8cce0;
+    --border-light: #d6e4f0;
     --mono: 'DM Mono', monospace;
     --serif: 'EB Garamond', Georgia, serif;
     --display: 'Cormorant Garamond', Georgia, serif;
@@ -125,6 +125,25 @@
     position: relative;
     padding: 8vw 4vw 6vw;
     max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .header-photo {
+    flex-shrink: 0;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid var(--border);
+    box-shadow: 0 4px 24px rgba(15,30,46,0.15);
+  }
+
+  .header-text {
+    flex: 1;
   }
 
   .header-label {
@@ -150,7 +169,7 @@
 
   h1 {
     font-family: var(--display);
-    font-size: clamp(3.2rem, 8vw, 7rem);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
     font-weight: 300;
     line-height: 1.0;
     letter-spacing: -0.01em;
@@ -165,7 +184,7 @@
 
   .header-title {
     font-family: var(--display);
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
     font-weight: 300;
     font-style: italic;
     color: var(--ink-light);
@@ -195,7 +214,7 @@
   }
 
   .meta-value {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--ink-light);
   }
 
@@ -323,6 +342,7 @@
   .synth-text p {
     font-size: 1.05rem;
     color: var(--ink-light);
+    text-align: justify;
     line-height: 1.8;
     margin-bottom: 1.2rem;
   }
@@ -409,9 +429,9 @@
 
   .lang-name {
     font-family: var(--display);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-style: italic;
-    width: 100px;
+    width: 120px;
     flex-shrink: 0;
     color: var(--ink);
   }
@@ -432,10 +452,10 @@
 
   .lang-level {
     font-family: var(--mono);
-    font-size: 0.62rem;
+    font-size: 0.78rem;
     letter-spacing: 0.1em;
     color: var(--ink-light);
-    width: 120px;
+    width: 160px;
     flex-shrink: 0;
   }
 
@@ -492,14 +512,14 @@
   }
 
   .tl-place {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--ink-light);
     font-style: italic;
     margin-bottom: 0.4rem;
   }
 
   .tl-detail {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--ink-light);
     line-height: 1.6;
   }
@@ -526,7 +546,7 @@
 
   .col-title {
     font-family: var(--mono);
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
@@ -682,7 +702,7 @@
 
   .pub-title {
     font-family: var(--display);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-style: italic;
     color: var(--ink);
     line-height: 1.4;
@@ -690,7 +710,7 @@
   }
 
   .pub-ref {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--ink-light);
     line-height: 1.5;
   }
@@ -720,10 +740,11 @@
     border: 1px solid;
   }
 
-  .badge-award { border-color: var(--gold); color: var(--gold); background: rgba(184,147,42,0.06); }
+  .badge-award { border-color: var(--gold); color: var(--gold); background: rgba(196,146,58,0.06); }
   .badge-accepted { border-color: #5a8a5a; color: #4a7a4a; }
   .badge-prep { border-color: #7a7a9a; color: #6a6a8a; }
   .badge-new { border-color: var(--accent); color: var(--accent); animation: newPulse 2s ease-in-out 3; }
+  .badge-avenir { border-color: #5a7a9a; color: #3a5a7a; background: rgba(90,122,154,0.06); }
 
   @keyframes newPulse {
     0%, 100% { opacity: 1; }
@@ -744,98 +765,6 @@
   }
 
   .pub-delete:hover { color: var(--accent); }
-
-  /* ─── FORM OVERLAY ─── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(26, 20, 16, 0.7);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-
-  .modal-overlay.open { display: flex; }
-
-  .modal {
-    background: var(--parchment);
-    border: 1px solid var(--border);
-    max-width: 600px;
-    width: 100%;
-    padding: 2.5rem;
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .modal-title {
-    font-family: var(--display);
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group {
-    margin-bottom: 1.2rem;
-  }
-
-  .form-label {
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 0.4rem;
-  }
-
-  .form-input, .form-select, .form-textarea {
-    width: 100%;
-    font-family: var(--serif);
-    font-size: 0.9rem;
-    border: 1px solid var(--border);
-    background: var(--parchment);
-    color: var(--ink);
-    padding: 0.6rem 0.9rem;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--accent);
-  }
-
-  .form-textarea { resize: vertical; min-height: 80px; }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .form-actions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: var(--ink-light);
-    line-height: 1;
-    transition: color 0.2s;
-  }
-
-  .modal-close:hover { color: var(--accent); }
 
   /* ─── FOOTER ─── */
   footer {
@@ -909,10 +838,10 @@
 <nav>
   <a href="#" class="nav-name">Z. Geylikman</a>
   <ul class="nav-links">
-    <li><a href="#synthese">Synthèse</a></li>
+    <li><a href="#synthese">Présentation</a></li>
     <li><a href="#parcours">Parcours</a></li>
     <li><a href="#publications">Publications</a></li>
-    <li><a href="#enseignement">Enseignement</a></li>
+    <li><a href="#enseignement">Autres activités</a></li>
   </ul>
   <a href="CV_Geylikman.pdf" download class="nav-dl">↓ Télécharger le CV</a>
 </nav>
@@ -922,36 +851,36 @@
   <div class="header-bg"></div>
   <div class="header-rule"></div>
   <div class="header-inner">
-    <div class="header-label">Docteure en Linguistique</div>
-    <h1>Zinaida<br><em>Geylikman</em></h1>
-    <p class="header-title">Linguistique historique &amp; sémantique médiévale — EPHE-PSL, Paris</p>
+    <img src="photo.jpg.jpg" alt="Zinaida Geylikman" class="header-photo">
+    <div class="header-text">
+      <div class="header-label">Docteure en Linguistique</div>
+      <h1>Zinaida GEYLIKMAN</h1>
+      <p class="header-title">Linguistique historique &amp; sémantique médiévale</p>
 
-    <div class="header-meta">
-      <div class="meta-item">
-        <span class="meta-label">Contact</span>
-        <span class="meta-value"><a href="mailto:zinaida.geylikman@gmail.com">zinaida.geylikman@gmail.com</a></span>
+      <div class="header-meta">
+        <div class="meta-item">
+          <span class="meta-label">Contact</span>
+          <span class="meta-value"><a href="mailto:zinaida.geylikman@gmail.com">zinaida.geylikman@gmail.com</a></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Localisation</span>
+          <span class="meta-value">France</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Profil académique</span>
+          <span class="meta-value"><a href="https://ephe.academia.edu/ZinaidaGeylikman" target="_blank">Academia.edu ↗</a></span>
+        </div>
       </div>
-      <div class="meta-item">
-        <span class="meta-label">Téléphone</span>
-        <span class="meta-value">06.34.14.49.14</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Localisation</span>
-        <span class="meta-value">Bagneux (92), France</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Profil académique</span>
-        <span class="meta-value"><a href="https://ephe.academia.edu/ZinaidaGeylikman" target="_blank">Academia.edu ↗</a></span>
-      </div>
-    </div>
 
-    <div class="header-themes">
-      <span class="theme-tag">Français médiéval</span>
-      <span class="theme-tag">Sémantique historique</span>
-      <span class="theme-tag">Lexicologie diachronique</span>
-      <span class="theme-tag">Pragmatique historique</span>
-      <span class="theme-tag">Études médiévales</span>
-      <span class="theme-tag">Linguistique de corpus</span>
+      <div class="header-themes">
+        <span class="theme-tag">Français médiéval</span>
+        <span class="theme-tag">Sémantique historique</span>
+        <span class="theme-tag">Lexicologie diachronique</span>
+        <span class="theme-tag">Pragmatique historique</span>
+        <span class="theme-tag">Études médiévales</span>
+        <span class="theme-tag">Linguistique de corpus</span>
+        <span class="theme-tag">Étude de la grammaticalisation</span>
+      </div>
     </div>
   </div>
   <div class="header-scroll">
@@ -964,39 +893,25 @@
 <section id="synthese" class="fade-in">
   <div class="section-header">
     <span class="section-num">01</span>
-    <h2>Fiche de <em>synthèse</em></h2>
+    <h2>Présentation</h2>
   </div>
   <div class="synth-grid">
     <div class="synth-text">
-      <p>
-        Docteure en linguistique de l'<strong>École Pratique des Hautes Études (EPHE-PSL)</strong>, 
-        mes recherches portent sur la sémantique et la lexicologie historiques du français médiéval, 
-        avec un intérêt particulier pour les dénominations féodales, les noms d'humains et leur évolution 
-        dans la longue durée (IX<sup>e</sup>–XV<sup>e</sup> siècles).
+       <p>
+        Mes recherches se situent dans les domaines de la sémantique et la pragmatique historiques du français médiéval, avec un focus sur les noms humains, et, plus généralement, de la diachronie du français et des langues romanes.
+        Au niveau méthodologique, mes travaux adoptent une approche de la linguistique de corpus outillée, y compris assistée par l'IA.
       </p>
       <p>
-        Ma thèse, financée par un contrat doctoral et soutenue en 2017, portait sur l'<strong>étude 
-        sémantique de <em>baron</em> et <em>chevalier</em></strong>. Elle a donné lieu à une monographie 
+        Mon intérêt envers l'histoire de la langue française est née au cours de mes études de Licence à l'Université d'Etat de Saint-Pétersbourg. Ma thèse, financée par un contrat doctoral et soutenue en 2017 à l'EPHE-PSL, Paris (laboratoire SAPRAT), représentait une <strong>étude 
+        sémantique des noms <em>baron</em> et <em>chevalier</em></strong> dans un corpus de textes français du XIIe au XVe siècle. Elle a donné lieu à une monographie 
         publiée chez Honoré Champion, récompensée par le <strong>Prix Bordin 2022</strong> de l'Académie 
         des Inscriptions et Belles-Lettres.
       </p>
       <p>
-        Mes travaux actuels, dans le cadre d'un post-doctorat ANR (projet HumaNs-MF, Université Paris Cité), 
-        s'orientent vers l'étude quantitative des noms d'humains généraux et la sociolinguistique historique 
-        outillée par des méthodes de corpus.
+        Mon parcours postdoctoral comprend plusieurs contrats d'enseignement et de recherche dans trois universités françaises. J'ai, en particulier, contribué à trois projets d'humanités numériques : au développement des corpus CoDiF (Corpus de dialogues français XIIIe – XXIe siècle) et <a href="https://mrsh.unicaen.fr/coutumiers/conde/accueil.html" target="_blank" rel="noopener">ConDÉ</a> (Six siècles de coutumiers normands), ainsi qu'à la création du dictionnaire électronique <a href="https://dfsm.elan-numerique.fr/" target="_blank" rel="noopener">DFSM</a> (Dictionnaire du français scientifique médiéval). Par ailleurs, j'ai bénéficié du financement ANR Access ERC Starting 2023. 
       </p>
-
-      <div class="award-box">
-        <span class="award-icon">🏅</span>
-        <div class="award-text">
-          <strong>Prix Bordin 2022</strong>
-          Académie des Inscriptions et Belles-Lettres — pour la monographie <em>Baron et chevalier. 
-          Une étude sémantique de noms d'humains dans la société féodale</em>, Honoré Champion, 2022.
-        </div>
-      </div>
-
       <div style="margin-top:2rem;">
-        <p style="margin-bottom:0.6rem;"><strong>Langues</strong></p>
+        <div class="col-title">Langues</div>
         <div class="lang-grid">
           <div class="lang-row">
             <span class="lang-name">Russe</span>
@@ -1029,6 +944,11 @@
             <span class="lang-level">A2 · Débutant</span>
           </div>
           <div class="lang-row">
+            <span class="lang-name">Finnois</span>
+            <div class="lang-bar-wrap"><div class="lang-bar" style="width:12.5%"></div></div>
+            <span class="lang-level">A1 · Débutant</span>
+          </div>
+          <div class="lang-row">
             <span class="lang-name">Latin</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:40%"></div></div>
             <span class="lang-level">Lu</span>
@@ -1054,6 +974,18 @@
         <div class="stat-num">4</div>
         <div class="stat-label">Contrats post-doctoraux</div>
       </div>
+      <div class="stat-block">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Collaborations pour projets d'humanités numériques</div>
+      </div>
+      <div class="award-box" style="margin-top:1.5rem;">
+        <span class="award-icon">🏅</span>
+        <div class="award-text">
+          <strong>Prix Bordin 2022</strong>
+          Académie des Inscriptions et Belles-Lettres — pour la monographie <em>Baron et chevalier.
+          Une étude sémantique de noms d'humains dans la société féodale</em>, Honoré Champion, 2022.
+        </div>
+      </div>
       <div style="margin-top:1.5rem;">
         <div class="col-title">Outils</div>
         <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
@@ -1075,7 +1007,7 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">02</span>
-      <h2>Parcours <em>professionnel</em></h2>
+      <h2><em>Parcours professionnel</em></h2>
     </div>
     <div class="two-col">
       <div>
@@ -1159,6 +1091,43 @@
           </div>
         </div>
 
+        <div style="margin-top:2rem;">
+          <div class="col-title">Volume horaire par discipline</div>
+          <div style="margin-bottom:1.5rem;font-size:1rem;color:var(--ink-light);">Total : <strong style="color:var(--ink)">388 HETD</strong></div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem;">
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Grammaire &amp; hist. de la langue</span>
+              <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:23.7%"></div></div>
+              <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">92h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Ancien français</span>
+              <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
+              <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">78h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Signif. &amp; théories ling.</span>
+              <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
+              <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">78h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Institution du français</span>
+              <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:12.4%"></div></div>
+              <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">48h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Linguistique générale</span>
+              <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:6.7%"></div></div>
+              <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">26h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Autres</span>
+              <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:17%"></div></div>
+              <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">66h</span>
+            </div>
+          </div>
+        </div>
+
         <div style="margin-top:3rem;">
           <div class="col-title">Formation</div>
           <div class="timeline">
@@ -1194,18 +1163,7 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">03</span>
-      <h2>Publications <em>&amp; travaux</em></h2>
-    </div>
-
-    <!-- ADD CONTROLS -->
-    <div style="background:var(--parchment);border:1px solid var(--border);padding:1.5rem;margin-bottom:2rem;">
-      <div style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Ajouter une publication</div>
-      <div class="pub-add-row">
-        <input type="text" class="pub-input" id="doi-input" placeholder="DOI (ex: 10.1234/exemple) ou URL" />
-        <button class="pub-btn" onclick="fetchDOI()">Récupérer via DOI</button>
-        <button class="pub-btn secondary" onclick="openModal()">Saisie manuelle</button>
-      </div>
-      <div class="pub-status" id="doi-status"></div>
+      <h2><em>Publications &amp; travaux</em></h2>
     </div>
 
     <!-- FILTERS -->
@@ -1216,7 +1174,7 @@
       <button class="filter-btn" onclick="filterPubs('chapitre', this)">Chapitres</button>
       <button class="filter-btn" onclick="filterPubs('article', this)">Articles</button>
       <button class="filter-btn" onclick="filterPubs('actes', this)">Actes</button>
-      <button class="filter-btn" onclick="filterPubs('communication', this)">Communications</button>
+      <button class="filter-btn" onclick="filterPubs('communication', this)">Communications récentes & à venir</button>
       <button class="filter-btn" onclick="filterPubs('programme', this)">Programmes soumis</button>
     </div>
 
@@ -1230,50 +1188,14 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">04</span>
-      <h2>Enseignement <em>&amp; activités</em></h2>
+      <h2><em>Autres activités</em></h2>
     </div>
     <div class="two-col">
-      <div>
-        <div class="col-title">Volume horaire par discipline</div>
-        <div style="margin-bottom:1.5rem;font-size:0.9rem;color:var(--ink-light);">Total : <strong style="color:var(--ink)">388 HETD</strong></div>
-        <div style="display:flex;flex-direction:column;gap:0.6rem;">
-          <div style="display:flex;align-items:center;gap:1rem;">
-            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Grammaire &amp; hist. de la langue</span>
-            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;width:${92/388*100}%;background:var(--accent);width:23.7%"></div></div>
-            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">92h</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:1rem;">
-            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Ancien français</span>
-            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
-            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">78h</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:1rem;">
-            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Signif. &amp; théories ling.</span>
-            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
-            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">78h</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:1rem;">
-            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Institution du français</span>
-            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:12.4%"></div></div>
-            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">48h</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:1rem;">
-            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Linguistique générale</span>
-            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:6.7%"></div></div>
-            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">26h</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:1rem;">
-            <span style="font-family:var(--mono);font-size:0.65rem;width:180px;color:var(--ink-light);">Autres</span>
-            <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:17%"></div></div>
-            <span style="font-family:var(--mono);font-size:0.62rem;color:var(--gold);">66h</span>
-          </div>
-        </div>
-      </div>
       <div>
         <div class="col-title">Organisation scientifique</div>
         <div class="timeline">
           <div class="tl-item">
-            <div class="tl-date">06/2025 (à venir)</div>
+            <div class="tl-date">06/2025</div>
             <div class="tl-role">Colloque GenreCorpLing</div>
             <div class="tl-place">Université Paris Cité — co-organisé avec A. Aleksandrova</div>
           </div>
@@ -1304,7 +1226,7 @@
             <div class="tl-item">
               <div class="tl-date">2016 &amp; 2019</div>
               <div class="tl-role">Direction scientifique d'ouvrages collectifs</div>
-              <div class="tl-place">Paris, L'Harmattan — 2 volumes co-dirigés</div>
+              <div class="tl-place">2 ouvrages, 1 numéro thématique co-dirigés</div>
             </div>
           </div>
         </div>
@@ -1324,107 +1246,11 @@
   <div class="footer-copy">© 2025</div>
 </footer>
 
-<!-- MODAL AJOUT MANUEL -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-title">Ajouter une publication</div>
-    <div class="form-group">
-      <label class="form-label">Catégorie</label>
-      <select class="form-select" id="f-cat">
-        <option value="monographie">Monographie</option>
-        <option value="direction">Direction d'ouvrage</option>
-        <option value="chapitre" selected>Chapitre d'ouvrage</option>
-        <option value="article">Article dans revue à CL</option>
-        <option value="actes">Actes de colloque</option>
-        <option value="communication">Communication</option>
-        <option value="programme">Programme soumis</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Titre</label>
-      <input type="text" class="form-input" id="f-title" placeholder="Titre de la publication" />
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Auteur(s)</label>
-        <input type="text" class="form-input" id="f-authors" placeholder="Ex: Geylikman Z." />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Année</label>
-        <input type="text" class="form-input" id="f-year" placeholder="2025" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Référence complète (revue, éditeur, pages…)</label>
-      <textarea class="form-textarea" id="f-ref" placeholder="Ex: Zeitschrift für romanische Philologie, 141-1, p. 1-30."></textarea>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">DOI / URL</label>
-        <input type="text" class="form-input" id="f-doi" placeholder="10.xxxx/..." />
-      </div>
-      <div class="form-group">
-        <label class="form-label">Statut</label>
-        <select class="form-select" id="f-status">
-          <option value="">Publié</option>
-          <option value="accepted">Accepté</option>
-          <option value="prep">En préparation</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-actions">
-      <button class="pub-btn secondary" onclick="closeModal()">Annuler</button>
-      <button class="pub-btn" onclick="addManual()">Ajouter</button>
-    </div>
-  </div>
-</div>
 
+<script src="publications.js"></script>
 <script>
-// ─── PUBLICATION DATA ───────────────────────────────────────────────────
-const defaultPubs = [
-  // MONOGRAPHIE
-  { id:1, cat:'monographie', authors:'Geylikman Z.', year:'2022', title:'Baron et chevalier. Une étude sémantique de noms d\'humains dans la société féodale', ref:'Paris, Honoré Champion.', doi:'', badges:['award'], badgeLabels:{award:'Prix Bordin 2022'} },
 
-  // DIRECTION
-  { id:2, cat:'direction', authors:'Geylikman Z. & Lambert P. (éds.)', year:'2016', title:'Rythmes d\'évolution en français médiéval. Observations d\'après quelques textes littéraires', ref:'Paris, L\'Harmattan.', doi:'' },
-  { id:3, cat:'direction', authors:'Boudes Y., Geylikman Z., Lambert P. & Sanchez A. (éds.)', year:'2019', title:'Rythmes d\'évolution en français médiéval. Observations d\'après quelques textes de savoir', ref:'Paris, L\'Harmattan.', doi:'' },
-  { id:4, cat:'direction', authors:'Paccosi T., Geylikman Z., Passarotti M., Bozia E. (eds.)', year:'en prép.', title:'Open Data for Quantitative Diachronic Linguistics', ref:'Journal of Open Humanities Data.', doi:'', badges:['prep'] },
-
-  // CHAPITRES
-  { id:5, cat:'chapitre', authors:'Geylikman Z. & Parussa G.', year:'en prép.', title:'L\'évolution du système d\'adresse dans la diachronie du français : pronoms et termes d\'adresse', ref:'Dans un volume sur la pragmatique historique du français. Paris, Honoré Champion.', doi:'', badges:['prep'] },
-  { id:6, cat:'chapitre', authors:'Geylikman Z.', year:'accepté', title:'Stop talking as a bourgeois, you are a nobleman: people-related stereotyped comparisons in Medieval French (9th-15th century)', ref:'Dans <em>Negotiating Norms: Generics and stereotypes across contexts</em>, De Gruyter Mouton.', doi:'', badges:['accepted'] },
-  { id:7, cat:'chapitre', authors:'Geylikman Z.', year:'accepté', title:'Nommer l\'humain dans l\'écriture scientifique en français médiéval : comment et pourquoi ? Le cas du Livre des Météores', ref:'Dans <em>Mélanges en l\'honneur de Joëlle Ducos</em>. Paris, Honoré Champion.', doi:'', badges:['accepted'] },
-  { id:8, cat:'chapitre', authors:'Geylikman Z.', year:'à paraître', title:'Le stéréotype nominal lié avec baron et son destin dans la chanson de geste en français médiéval', ref:'Dans <em>Naissance et vie des stéréotypes</em>. Rennes, PUR.', doi:'', badges:['prep'] },
-  { id:9, cat:'chapitre', authors:'Boudes Y. & Geylikman Z.', year:'2019', title:'Introduction', ref:'Dans Boudes/Geylikman/Lambert/Sanchez (éds.), <em>Rythmes d\'évolution en français médiéval. Textes de savoir</em>. Paris, L\'Harmattan, p. 11-20.', doi:'' },
-  { id:10, cat:'chapitre', authors:'Geylikman Z.', year:'2019', title:'Tu parli como ber : le destin de la forme monosyllabique du substantif baron dans la Geste francor', ref:'Dans Dufter/Grübl/Scharinger (éds.), <em>Des parlers d\'oïl à la francophonie</em>. De Gruyter, p. 19-43.', doi:'10.1515/9783110541816-002' },
-  { id:11, cat:'chapitre', authors:'Geylikman Z.', year:'2016', title:'Le sémantisme de chevalier en français médiéval : évolution ou variation entre les genres ?', ref:'Dans Geylikman/Lambert (éds.), <em>Les rythmes d\'évolution en français médiéval. Textes littéraires</em>. Paris, L\'Harmattan, p. 53-172.', doi:'' },
-
-  // ARTICLES
-  { id:12, cat:'article', authors:'Geylikman Z.', year:'2025', title:'The Emergence of personne as a Negative Indefinite in Medieval and Pre-Classical French', ref:'<em>Journal of French Language Studies</em>.', doi:'' },
-  { id:13, cat:'article', authors:'Geylikman Z.', year:'2025', title:'Nul homme en français médiéval : une grammaticalisation qui n\'a jamais eu lieu', ref:'<em>Zeitschrift für romanische Philologie</em>, 141-1.', doi:'10.1515/zrp-2025-0011' },
-  { id:14, cat:'article', authors:'Geylikman Z.', year:'2024', title:'Nom d\'humain général personne en français médiéval : l\'interface sociale de l\'être humain', ref:'<em>l\'Information Grammaticale</em>, 180, p. 17-25.', doi:'10.2143/IG.180.0.3292822' },
-  { id:15, cat:'article', authors:'Geylikman Z.', year:'2022', title:'La norme d\'adresse orale et écrite en français médiéval sur l\'exemple de baron et chevalier', ref:'<em>Linguistique de l\'écrit</em>, numéro thématique 3.', doi:'10.19079/lde.2022.s3.8' },
-  { id:16, cat:'article', authors:'Geylikman Z.', year:'2020', title:'Les noms d\'humains féodaux et la subjectivité de la catégorisation dans un corpus de chroniques en français médiéval', ref:'<em>Langue française</em>, 207, p. 91-106.', doi:'10.3917/lf.207.0091' },
-
-  // ACTES
-  { id:17, cat:'actes', authors:'Geylikman Z.', year:'2018', title:'Bachelier léger en français médiéval : une étude sémantique du figement', ref:'Dans <em>Atti del XXVIII Congresso internazionale di linguistica e filologia romanza</em>, vol. 1, p. 706-718.', doi:'' },
-  { id:18, cat:'actes', authors:'Geylikman Z.', year:'2017', title:'Le sémantisme large dans la Chanson de Roland : le cas du substantif baron', ref:'Dans François/Ridruejo/Siller-Runggaldier (éds.), <em>Actes du XXVII CILPR</em>. Nancy, p. 83-94.', doi:'' },
-
-  // PROGRAMME
-  { id:19, cat:'programme', authors:'Geylikman Z.', year:'2025', title:'Human Nouns and Social CHANGE: a case study of Medieval French (9th-15th century)', ref:'Programme de recherche soumis au financement.', doi:'10.5281/zenodo.15127027' },
-
-  // COMMUNICATIONS (sélection des plus récentes)
-  { id:20, cat:'communication', authors:'Geylikman Z.', year:'2026', title:'Counting butterflies\' matters: lexical frequencies and agency of power. The case of human nouns in Medieval French', ref:'Quantitative Diachronic Linguistics and Cultural Analytics, King\'s College London, 15-16 janv. 2026.', doi:'' },
-  { id:21, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'Stop talking as a bourgeois, you are a nobleman: people-related stereotyped comparisons in Medieval French', ref:'Generics and stereotypes, Leiden University, 5-6 juin 2025.', doi:'' },
-  { id:22, cat:'communication', authors:'Geylikman Z.', year:'2024', title:'General human nouns in Medieval French: borderline grammaticalization?', ref:'LLcD 2024, Sorbonne Université, 9-11 sept. 2024.', doi:'' },
-  { id:23, cat:'communication', authors:'Geylikman Z.', year:'2024', title:'Les termes d\'adresse dans les interactions « homme-femme » sur un corpus de fabliaux en ancien français', ref:'DIACHRO XI, Universidad Complutense de Madrid, 22-24 mai 2024.', doi:'' },
-  { id:24, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'La norme d\'adresse et sa transgression dans quelques textes en français médiéval', ref:'Séminaire de Master de G. Parussa (invitation).', doi:'' },
-  { id:25, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'Quantitative methods on small corpora for historical sociolinguistics: a case study of Old French fabliaux', ref:'Data in Historical Linguistics Seminar, King\'s College London (invitation).', doi:'' },
-];
-
-let publications = JSON.parse(localStorage.getItem('zg_pubs') || 'null') || defaultPubs.map(p => ({...p}));
-let nextId = Math.max(...publications.map(p=>p.id)) + 1;
+const publications = defaultPubs.map(p => ({...p}));
 let currentFilter = 'all';
 
 const catLabels = {
@@ -1433,15 +1259,11 @@ const catLabels = {
   chapitre: 'Chapitres d\'ouvrages',
   article: 'Articles dans revues à CL',
   actes: 'Actes de colloques',
-  communication: 'Communications',
+  communication: 'Communications récentes & à venir',
   programme: 'Programmes soumis au financement',
 };
 
 const catOrder = ['monographie','direction','chapitre','article','actes','programme','communication'];
-
-function savePubs() {
-  try { localStorage.setItem('zg_pubs', JSON.stringify(publications)); } catch(e) {}
-}
 
 function filterPubs(cat, btn) {
   currentFilter = cat;
@@ -1494,7 +1316,6 @@ function renderPubs() {
           <div class="pub-ref">${pub.authors} (${pub.year}) — ${pub.ref} ${doiHtml}</div>
           ${badgesHtml ? `<div class="pub-badges">${badgesHtml}</div>` : ''}
         </div>
-        <button class="pub-delete" onclick="deletePub(${pub.id})" title="Supprimer">✕</button>
       `;
       list.appendChild(li);
       globalNum++;
@@ -1504,108 +1325,6 @@ function renderPubs() {
   });
 }
 
-function deletePub(id) {
-  if (!confirm('Supprimer cette publication ?')) return;
-  publications = publications.filter(p => p.id !== id);
-  savePubs();
-  renderPubs();
-}
-
-async function fetchDOI() {
-  const raw = document.getElementById('doi-input').value.trim();
-  if (!raw) { setStatus('Veuillez entrer un DOI ou une URL.', 'var(--accent)'); return; }
-  
-  let doi = raw;
-  if (doi.startsWith('http')) {
-    const m = doi.match(/10\.\d{4,}\/\S+/);
-    doi = m ? m[0] : null;
-  } else {
-    doi = doi.replace(/^doi:\s*/i, '').trim();
-  }
-
-  if (!doi) { setStatus('Format DOI non reconnu. Essayez la saisie manuelle.', 'var(--accent)'); return; }
-  
-  setStatus('Récupération des métadonnées…');
-  try {
-    const res = await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`);
-    if (!res.ok) throw new Error('DOI non trouvé');
-    const data = await res.json();
-    const w = data.message;
-    
-    const title = (w.title && w.title[0]) || 'Titre inconnu';
-    const authors = w.author ? w.author.map(a => `${a.family || ''} ${(a.given||'').charAt(0)}.`).join(', ') : 'Auteur(s) inconnu(s)';
-    const year = (w.published && w.published['date-parts'] && w.published['date-parts'][0][0]) || '?';
-    const journal = (w['container-title'] && w['container-title'][0]) || '';
-    const volume = w.volume || '';
-    const page = w.page || '';
-    const ref = [journal, volume, page ? `p. ${page}` : ''].filter(Boolean).join(', ') + '.';
-
-    const newPub = {
-      id: nextId++,
-      cat: journal ? 'article' : 'chapitre',
-      authors,
-      year: String(year),
-      title,
-      ref,
-      doi,
-      isNew: true,
-    };
-    publications.push(newPub);
-    savePubs();
-    renderPubs();
-    document.getElementById('doi-input').value = '';
-    setStatus(`✓ Publication ajoutée : « ${title.substring(0,60)}… »`);
-    currentFilter = 'all';
-    document.querySelectorAll('.filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
-  } catch(e) {
-    setStatus('Impossible de récupérer ce DOI. Vérifiez-le ou utilisez la saisie manuelle.', 'var(--accent)');
-  }
-}
-
-function setStatus(msg, color='var(--gold)') {
-  const el = document.getElementById('doi-status');
-  el.textContent = msg;
-  el.style.color = color;
-}
-
-function openModal() {
-  document.getElementById('modal-overlay').classList.add('open');
-}
-
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-}
-
-function closeModalOnBg(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModal();
-}
-
-function addManual() {
-  const title = document.getElementById('f-title').value.trim();
-  if (!title) { alert('Le titre est obligatoire.'); return; }
-  const statusVal = document.getElementById('f-status').value;
-  const badges = statusVal ? [statusVal] : [];
-  const newPub = {
-    id: nextId++,
-    cat: document.getElementById('f-cat').value,
-    authors: document.getElementById('f-authors').value.trim() || 'Geylikman Z.',
-    year: document.getElementById('f-year').value.trim() || new Date().getFullYear().toString(),
-    title,
-    ref: document.getElementById('f-ref').value.trim(),
-    doi: document.getElementById('f-doi').value.trim().replace(/^https?:\/\/doi\.org\//,''),
-    badges,
-    isNew: true,
-  };
-  publications.push(newPub);
-  savePubs();
-  renderPubs();
-  closeModal();
-  ['f-title','f-authors','f-year','f-ref','f-doi'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('f-status').value = '';
-  currentFilter = 'all';
-  document.querySelectorAll('.filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
-  document.getElementById('publications').scrollIntoView({behavior:'smooth'});
-}
 
 // ─── INTERSECTION OBSERVER ───
 const observer = new IntersectionObserver((entries) => {
