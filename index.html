@@ -334,7 +334,7 @@
   /* ─── SYNTHÈSE ─── */
   .synth-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 4rem;
     align-items: start;
   }
@@ -716,13 +716,21 @@
   }
 
   .pub-ref a {
-    color: var(--accent);
+    color: var(--accent-light);
     text-decoration: none;
     font-family: var(--mono);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid var(--accent-light);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    margin-left: 0.3rem;
   }
 
-  .pub-ref a:hover { text-decoration: underline; }
+  .pub-ref a:hover {
+    background: var(--accent-light);
+    color: white;
+  }
 
   .pub-badges {
     display: flex;
@@ -743,6 +751,7 @@
   .badge-award { border-color: var(--gold); color: var(--gold); background: rgba(196,146,58,0.06); }
   .badge-accepted { border-color: #5a8a5a; color: #4a7a4a; }
   .badge-prep { border-color: #7a7a9a; color: #6a6a8a; }
+  .badge-press { border-color: #7a7a9a; color: #6a6a8a; }
   .badge-new { border-color: var(--accent); color: var(--accent); animation: newPulse 2s ease-in-out 3; }
   .badge-avenir { border-color: #5a7a9a; color: #3a5a7a; background: rgba(90,122,154,0.06); }
 
@@ -821,6 +830,34 @@
     transform: translateY(0);
   }
 
+  /* ─── LANG TOGGLE ─── */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: 1rem;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--ink-light);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  .lang-sep {
+    color: var(--border);
+    font-size: 0.75rem;
+  }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     .synth-grid, .two-col { grid-template-columns: 1fr; gap: 2rem; }
@@ -838,12 +875,17 @@
 <nav>
   <a href="#" class="nav-name">Z. Geylikman</a>
   <ul class="nav-links">
-    <li><a href="#synthese">Présentation</a></li>
-    <li><a href="#parcours">Parcours</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="#enseignement">Autres activités</a></li>
+    <li><a href="#synthese" data-i18n="nav.presentation">Présentation</a></li>
+    <li><a href="#parcours" data-i18n="nav.parcours">Parcours</a></li>
+    <li><a href="#publications" data-i18n="nav.publications">Publications</a></li>
+    <li><a href="#enseignement" data-i18n="nav.activites">Autres activités</a></li>
   </ul>
-  <a href="CV_Geylikman.pdf" download class="nav-dl">↓ Télécharger le CV</a>
+  <a href="CV_Geylikman.pdf" download class="nav-dl" data-i18n="nav.cv">↓ Télécharger le CV</a>
+  <div class="lang-toggle">
+    <button onclick="setLang('fr')" id="btn-fr" class="lang-btn active">FR</button>
+    <span class="lang-sep">|</span>
+    <button onclick="setLang('en')" id="btn-en" class="lang-btn">EN</button>
+  </div>
 </nav>
 
 <!-- HEADER -->
@@ -853,9 +895,9 @@
   <div class="header-inner">
     <img src="photo.jpg.jpg" alt="Zinaida Geylikman" class="header-photo">
     <div class="header-text">
-      <div class="header-label">Docteure en Linguistique</div>
+      <div class="header-label" data-i18n="header.label">Docteure en Linguistique</div>
       <h1>Zinaida GEYLIKMAN</h1>
-      <p class="header-title">Linguistique historique &amp; sémantique médiévale</p>
+      <p class="header-title" data-i18n="header.subtitle">Linguistique historique &amp; sémantique médiévale</p>
 
       <div class="header-meta">
         <div class="meta-item">
@@ -863,29 +905,33 @@
           <span class="meta-value"><a href="mailto:zinaida.geylikman@gmail.com">zinaida.geylikman@gmail.com</a></span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Localisation</span>
+          <span class="meta-label" data-i18n="header.loc-label">Localisation</span>
           <span class="meta-value">France</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Profil académique</span>
+          <span class="meta-label" data-i18n="header.profil-label">Profil académique</span>
           <span class="meta-value"><a href="https://ephe.academia.edu/ZinaidaGeylikman" target="_blank">Academia.edu ↗</a></span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">ORCID</span>
+          <span class="meta-value">0000-0002-6488-1623</span>
         </div>
       </div>
 
       <div class="header-themes">
-        <span class="theme-tag">Français médiéval</span>
-        <span class="theme-tag">Sémantique historique</span>
-        <span class="theme-tag">Lexicologie diachronique</span>
-        <span class="theme-tag">Pragmatique historique</span>
-        <span class="theme-tag">Études médiévales</span>
-        <span class="theme-tag">Linguistique de corpus</span>
-        <span class="theme-tag">Étude de la grammaticalisation</span>
+        <span class="theme-tag" data-i18n="theme.medieval">Français médiéval</span>
+        <span class="theme-tag" data-i18n="theme.semantique">Sémantique historique</span>
+        <span class="theme-tag" data-i18n="theme.lexico">Lexicologie diachronique</span>
+        <span class="theme-tag" data-i18n="theme.pragma">Pragmatique historique</span>
+        <span class="theme-tag" data-i18n="theme.etudes">Études médiévales</span>
+        <span class="theme-tag" data-i18n="theme.corpus">Linguistique de corpus</span>
+        <span class="theme-tag" data-i18n="theme.gramm">Étude de la grammaticalisation</span>
       </div>
     </div>
   </div>
   <div class="header-scroll">
     <div class="scroll-arrow"><span></span><span></span><span></span></div>
-    Défiler
+    <span data-i18n="header.scroll">Défiler</span>
   </div>
 </header>
 
@@ -893,65 +939,55 @@
 <section id="synthese" class="fade-in">
   <div class="section-header">
     <span class="section-num">01</span>
-    <h2>Présentation</h2>
+    <h2 data-i18n="s01.title">Présentation</h2>
   </div>
   <div class="synth-grid">
     <div class="synth-text">
-       <p>
-        Mes recherches se situent dans les domaines de la sémantique et la pragmatique historiques du français médiéval, avec un focus sur les noms humains, et, plus généralement, de la diachronie du français et des langues romanes.
-        Au niveau méthodologique, mes travaux adoptent une approche de la linguistique de corpus outillée, y compris assistée par l'IA.
-      </p>
-      <p>
-        Mon intérêt envers l'histoire de la langue française est née au cours de mes études de Licence à l'Université d'Etat de Saint-Pétersbourg. Ma thèse, financée par un contrat doctoral et soutenue en 2017 à l'EPHE-PSL, Paris (laboratoire SAPRAT), représentait une <strong>étude 
-        sémantique des noms <em>baron</em> et <em>chevalier</em></strong> dans un corpus de textes français du XIIe au XVe siècle. Elle a donné lieu à une monographie 
-        publiée chez Honoré Champion, récompensée par le <strong>Prix Bordin 2022</strong> de l'Académie 
-        des Inscriptions et Belles-Lettres.
-      </p>
-      <p>
-        Mon parcours postdoctoral comprend plusieurs contrats d'enseignement et de recherche dans trois universités françaises. J'ai, en particulier, contribué à trois projets d'humanités numériques : au développement des corpus CoDiF (Corpus de dialogues français XIIIe – XXIe siècle) et <a href="https://mrsh.unicaen.fr/coutumiers/conde/accueil.html" target="_blank" rel="noopener">ConDÉ</a> (Six siècles de coutumiers normands), ainsi qu'à la création du dictionnaire électronique <a href="https://dfsm.elan-numerique.fr/" target="_blank" rel="noopener">DFSM</a> (Dictionnaire du français scientifique médiéval). Par ailleurs, j'ai bénéficié du financement ANR Access ERC Starting 2023. 
-      </p>
+      <p data-i18n="s01.p1">Mes recherches se situent dans les domaines de la sémantique et la pragmatique historiques du français médiéval, avec un focus sur les noms humains, et, plus généralement, de la diachronie du français et des langues romanes. Au niveau méthodologique, mes travaux adoptent une approche de la linguistique de corpus outillée, y compris assistée par l'IA.</p>
+      <p data-i18n="s01.p2">Mon intérêt envers l'histoire de la langue française est née au cours de mes études de Licence à l'Université d'Etat de Saint-Pétersbourg. Ma thèse, financée par un contrat doctoral et soutenue en 2017 à l'EPHE-PSL, Paris (laboratoire SAPRAT), représentait une <strong>étude sémantique des noms <em>baron</em> et <em>chevalier</em></strong> dans un corpus de textes français du XIIe au XVe siècle. Elle a donné lieu à une monographie publiée chez Honoré Champion, récompensée par le <strong>Prix Bordin 2022</strong> de l'Académie des Inscriptions et Belles-Lettres.</p>
+      <p data-i18n="s01.p3">Mon parcours postdoctoral comprend plusieurs contrats d'enseignement et de recherche dans trois universités françaises. J'ai, en particulier, contribué à trois projets d'humanités numériques : au développement des corpus CoDiF (Corpus de dialogues français XIIIe – XXIe siècle) et <a href="https://mrsh.unicaen.fr/coutumiers/conde/accueil.html" target="_blank" rel="noopener">ConDÉ</a> (Six siècles de coutumiers normands), ainsi qu'à la création du dictionnaire électronique <a href="https://dfsm.elan-numerique.fr/" target="_blank" rel="noopener">DFSM</a> (Dictionnaire du français scientifique médiéval). Par ailleurs, j'ai bénéficié du financement ANR Access ERC Starting 2023.</p>
       <div style="margin-top:2rem;">
-        <div class="col-title">Langues</div>
+        <div class="col-title" data-i18n="s01.langues">Langues</div>
         <div class="lang-grid">
           <div class="lang-row">
-            <span class="lang-name">Russe</span>
+            <span class="lang-name" data-i18n="lang.russe">Russe</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
-            <span class="lang-level">Langue maternelle</span>
+            <span class="lang-level" data-i18n="level.native">Langue maternelle</span>
           </div>
           <div class="lang-row">
-            <span class="lang-name">Français</span>
+            <span class="lang-name" data-i18n="lang.francais">Français</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:100%"></div></div>
-            <span class="lang-level">C2 · Professionnel</span>
+            <span class="lang-level" data-i18n="level.c2">C2 · Professionnel</span>
           </div>
           <div class="lang-row">
-            <span class="lang-name">Anglais</span>
+            <span class="lang-name" data-i18n="lang.anglais">Anglais</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:83%"></div></div>
-            <span class="lang-level">C1 · Avancé</span>
+            <span class="lang-level" data-i18n="level.c1">C1 · Avancé</span>
           </div>
           <div class="lang-row">
-            <span class="lang-name">Italien</span>
+            <span class="lang-name" data-i18n="lang.italien">Italien</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:67%"></div></div>
-            <span class="lang-level">B2 · Intermédiaire</span>
+            <span class="lang-level" data-i18n="level.b2">B2 · Intermédiaire</span>
           </div>
           <div class="lang-row">
-            <span class="lang-name">Espagnol</span>
+            <span class="lang-name" data-i18n="lang.espagnol">Espagnol</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:50%"></div></div>
-            <span class="lang-level">B1 · Intermédiaire</span>
+            <span class="lang-level" data-i18n="level.b1">B1 · Intermédiaire</span>
           </div>
           <div class="lang-row">
-            <span class="lang-name">Allemand</span>
+            <span class="lang-name" data-i18n="lang.allemand">Allemand</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:25%"></div></div>
-            <span class="lang-level">A2 · Débutant</span>
+            <span class="lang-level" data-i18n="level.a2">A2 · Débutant</span>
           </div>
           <div class="lang-row">
-            <span class="lang-name">Finnois</span>
+            <span class="lang-name" data-i18n="lang.finnois">Finnois</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:12.5%"></div></div>
-            <span class="lang-level">A1 · Débutant</span>
+            <span class="lang-level" data-i18n="level.a1">A1 · Débutant</span>
           </div>
           <div class="lang-row">
-            <span class="lang-name">Latin</span>
+            <span class="lang-name" data-i18n="lang.latin">Latin</span>
             <div class="lang-bar-wrap"><div class="lang-bar" style="width:40%"></div></div>
-            <span class="lang-level">Lu</span>
+            <span class="lang-level" data-i18n="level.lu">Lu</span>
           </div>
         </div>
       </div>
@@ -960,34 +996,30 @@
     <div class="synth-stats">
       <div class="stat-block">
         <div class="stat-num">18</div>
-        <div class="stat-label">Publications (parues &amp; acceptées)</div>
+        <div class="stat-label" data-i18n="stat.pub">Publications (parues &amp; acceptées)</div>
       </div>
       <div class="stat-block">
         <div class="stat-num">37</div>
-        <div class="stat-label">Communications scientifiques</div>
+        <div class="stat-label" data-i18n="stat.comm">Communications scientifiques</div>
       </div>
       <div class="stat-block">
         <div class="stat-num">388</div>
-        <div class="stat-label">Heures d'enseignement (HETD)</div>
+        <div class="stat-label" data-i18n="stat.ens">Heures d'enseignement (HETD)</div>
       </div>
       <div class="stat-block">
         <div class="stat-num">4</div>
-        <div class="stat-label">Contrats post-doctoraux</div>
+        <div class="stat-label" data-i18n="stat.postdoc">Contrats post-doctoraux</div>
       </div>
       <div class="stat-block">
         <div class="stat-num">3</div>
-        <div class="stat-label">Collaborations pour projets d'humanités numériques</div>
+        <div class="stat-label" data-i18n="stat.collab">Collaborations pour projets d'humanités numériques</div>
       </div>
       <div class="award-box" style="margin-top:1.5rem;">
         <span class="award-icon">🏅</span>
-        <div class="award-text">
-          <strong>Prix Bordin 2022</strong>
-          Académie des Inscriptions et Belles-Lettres — pour la monographie <em>Baron et chevalier.
-          Une étude sémantique de noms d'humains dans la société féodale</em>, Honoré Champion, 2022.
-        </div>
+        <div class="award-text" data-i18n="award.text"><strong>Prix Bordin 2022</strong> Académie des Inscriptions et Belles-Lettres — pour la monographie <em>Baron et chevalier. Une étude sémantique de noms d'humains dans la société féodale</em>, Honoré Champion, 2022.</div>
       </div>
       <div style="margin-top:1.5rem;">
-        <div class="col-title">Outils</div>
+        <div class="col-title" data-i18n="outils.title">Outils</div>
         <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
           <span class="theme-tag">VS Code</span>
           <span class="theme-tag">Claude (Anthropic)</span>
@@ -1007,152 +1039,153 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">02</span>
-      <h2><em>Parcours professionnel</em></h2>
+      <h2><em data-i18n="s02.title">Parcours professionnel</em></h2>
     </div>
     <div class="two-col">
       <div>
-        <div class="col-title">Recherche</div>
+        <div class="col-title" data-i18n="col.recherche">Recherche</div>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-date">2023 — 2025 · 24 mois</div>
-            <div class="tl-role">Post-doctorante</div>
-            <div class="tl-place">Université Paris Cité — URP EDA</div>
-            <div class="tl-detail">ANR Access ERC Starting 2023, projet HumaNs-MF</div>
-            <span class="tl-tag">Post-doctorat</span>
+            <div class="tl-role" data-i18n="r1.role">Post-doctorante</div>
+            <div class="tl-place" data-i18n="r1.place">Université Paris Cité — URP EDA</div>
+            <div class="tl-detail" data-i18n="r1.detail">ANR Access ERC Starting 2023, projet HumaNs-MF</div>
+            <span class="tl-tag" data-i18n="r1.tag">Post-doctorat</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2021 — 2022 · 6 mois</div>
-            <div class="tl-role">Post-doctorante</div>
-            <div class="tl-place">Sorbonne Université — STIH</div>
-            <div class="tl-detail">Projet DFSM (Dictionnaire du français scientifique médiéval). Création de notices lexicographiques, encodage XML.</div>
-            <span class="tl-tag">Post-doctorat</span>
+            <div class="tl-role" data-i18n="r2.role">Post-doctorante</div>
+            <div class="tl-place" data-i18n="r2.place">Sorbonne Université — STIH</div>
+            <div class="tl-detail" data-i18n="r2.detail">Projet DFSM (Dictionnaire du français scientifique médiéval). Création de notices lexicographiques, encodage XML.</div>
+            <span class="tl-tag" data-i18n="r2.tag">Post-doctorat</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2021 · 3,5 mois</div>
-            <div class="tl-role">Post-doctorante</div>
-            <div class="tl-place">Université de Caen Normandie — CRISCO</div>
-            <div class="tl-detail">Projet RIN CONDÉ. Révision de la lemmatisation et annotation automatiques, coordination d'équipe.</div>
-            <span class="tl-tag">Post-doctorat</span>
+            <div class="tl-role" data-i18n="r3.role">Post-doctorante</div>
+            <div class="tl-place" data-i18n="r3.place">Université de Caen Normandie — CRISCO</div>
+            <div class="tl-detail" data-i18n="r3.detail">Projet RIN CONDÉ. Révision de la lemmatisation et annotation automatiques, coordination d'équipe.</div>
+            <span class="tl-tag" data-i18n="r3.tag">Post-doctorat</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2018 — 2020 · 7 contrats</div>
-            <div class="tl-role">Chargée de recherche vacataire</div>
-            <div class="tl-place">Université Sorbonne Nouvelle — CLESTHIA</div>
-            <div class="tl-detail">Projet CoDiF. Encodage XML-TEI de textes français du XIII<sup>e</sup> au XXI<sup>e</sup> siècle.</div>
-            <span class="tl-tag">Recherche</span>
+            <div class="tl-role" data-i18n="r4.role">Chargée de recherche vacataire</div>
+            <div class="tl-place" data-i18n="r4.place">Université Sorbonne Nouvelle — CLESTHIA</div>
+            <div class="tl-detail" data-i18n="r4.detail">Projet CoDiF. Encodage XML-TEI de textes français du XIII<sup>e</sup> au XXI<sup>e</sup> siècle.</div>
+            <span class="tl-tag" data-i18n="r4.tag">Recherche</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2013 — 2017</div>
-            <div class="tl-role">Doctorante (contrat doctoral)</div>
-            <div class="tl-place">EPHE-PSL — Laboratoire SAPRAT</div>
-            <div class="tl-detail">Thèse sur l'étude sémantique de <em>baron</em> et <em>chevalier</em> (XII<sup>e</sup>–XV<sup>e</sup> siècles). Dir. Joëlle Ducos.</div>
-            <span class="tl-tag">Doctorat</span>
+            <div class="tl-role" data-i18n="r5.role">Doctorante (contrat doctoral)</div>
+            <div class="tl-place" data-i18n="r5.place">EPHE-PSL — Laboratoire SAPRAT</div>
+            <div class="tl-detail" data-i18n="r5.detail">Thèse sur l'étude sémantique de <em>baron</em> et <em>chevalier</em> (XII<sup>e</sup>–XV<sup>e</sup> siècles). Dir. Joëlle Ducos.</div>
+            <span class="tl-tag" data-i18n="r5.tag">Doctorat</span>
+          </div>
+        </div>
+
+        <div style="margin-top:3rem;">
+          <div class="col-title" data-i18n="col.formation">Formation</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-date">2017</div>
+              <div class="tl-role" data-i18n="f1.role">Doctorat en Linguistique</div>
+              <div class="tl-place" data-i18n="f1.place">EPHE-PSL, laboratoire SAPRAT</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-date">2013</div>
+              <div class="tl-role" data-i18n="f2.role">Master 2 Langue française (Recherche) — Très bien</div>
+              <div class="tl-place" data-i18n="f2.place">Université Paris IV Sorbonne</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-date">2012</div>
+              <div class="tl-role" data-i18n="f3.role">Master 1 Langue française (Recherche) — Très bien</div>
+              <div class="tl-place" data-i18n="f3.place">Université Paris IV Sorbonne</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-date">2011</div>
+              <div class="tl-role" data-i18n="f4.role">Licence — Traduction et Interprétariat</div>
+              <div class="tl-place" data-i18n="f4.place">Université d'État de Saint-Pétersbourg</div>
+            </div>
           </div>
         </div>
       </div>
       <div>
-        <div class="col-title">Enseignement</div>
+        <div class="col-title" data-i18n="col.enseignement">Enseignement</div>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-date">2023 · 6 mois</div>
-            <div class="tl-role">ATER (temps plein, 96h)</div>
-            <div class="tl-place">Université de Caen Normandie — UFR HSS</div>
-            <span class="tl-tag">ATER</span>
+            <div class="tl-role" data-i18n="t1.role">ATER (temps plein, 96h)</div>
+            <div class="tl-place" data-i18n="t1.place">Université de Caen Normandie — UFR HSS</div>
+            <span class="tl-tag" data-i18n="t1.tag">ATER</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2022 · 6 mois</div>
-            <div class="tl-role">Chargée de cours (78h)</div>
-            <div class="tl-place">Sorbonne Université Lettres — UFR Langue française</div>
-            <span class="tl-tag">Chargée de cours</span>
+            <div class="tl-role" data-i18n="t2.role">Chargée de cours (78h)</div>
+            <div class="tl-place" data-i18n="t2.place">Sorbonne Université Lettres — UFR Langue française</div>
+            <span class="tl-tag" data-i18n="t2.tag">Chargée de cours</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2019 — 2020</div>
-            <div class="tl-role">Chargée de cours (39h)</div>
-            <div class="tl-place">Sorbonne Université Lettres — UFR Langue française</div>
-            <span class="tl-tag">Chargée de cours</span>
+            <div class="tl-role" data-i18n="t3.role">Chargée de cours (39h)</div>
+            <div class="tl-place" data-i18n="t3.place">Sorbonne Université Lettres — UFR Langue française</div>
+            <span class="tl-tag" data-i18n="t3.tag">Chargée de cours</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2017 — 2018</div>
-            <div class="tl-role">ATER (temps plein, 192h)</div>
-            <div class="tl-place">Sorbonne Université Lettres — UFR Langue française</div>
-            <span class="tl-tag">ATER</span>
+            <div class="tl-role" data-i18n="t4.role">ATER (temps plein, 192h)</div>
+            <div class="tl-place" data-i18n="t4.place">Sorbonne Université Lettres — UFR Langue française</div>
+            <span class="tl-tag" data-i18n="t4.tag">ATER</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2011 · 6 mois</div>
-            <div class="tl-role">Professeure de FLE</div>
-            <div class="tl-place">Institut français de Saint-Pétersbourg</div>
-            <span class="tl-tag">FLE</span>
+            <div class="tl-role" data-i18n="t5.role">Professeure de FLE</div>
+            <div class="tl-place" data-i18n="t5.place">Institut français de Saint-Pétersbourg</div>
+            <span class="tl-tag" data-i18n="t5.tag">FLE</span>
           </div>
           <div class="tl-item">
             <div class="tl-date">2008 — 2011</div>
-            <div class="tl-role">Professeure de FLE</div>
-            <div class="tl-place">Centre de la Langue française (CLF), Saint-Pétersbourg</div>
-            <span class="tl-tag">FLE</span>
+            <div class="tl-role" data-i18n="t6.role">Professeure de FLE</div>
+            <div class="tl-place" data-i18n="t6.place">Centre de la Langue française (CLF), Saint-Pétersbourg</div>
+            <span class="tl-tag" data-i18n="t6.tag">FLE</span>
           </div>
         </div>
 
         <div style="margin-top:2rem;">
-          <div class="col-title">Volume horaire par discipline</div>
-          <div style="margin-bottom:1.5rem;font-size:1rem;color:var(--ink-light);">Total : <strong style="color:var(--ink)">388 HETD</strong></div>
+          <div class="col-title" data-i18n="col.volume">Volume horaire par discipline</div>
+          <div style="margin-bottom:1.5rem;font-size:1rem;color:var(--ink-light);" data-i18n="volume.total">Total : <strong style="color:var(--ink)">388 HETD</strong></div>
           <div style="display:flex;flex-direction:column;gap:0.6rem;">
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Grammaire &amp; hist. de la langue</span>
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.grammaire">Grammaire &amp; hist. de la langue</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:23.7%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">92h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Ancien français</span>
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.ancien">Ancien français</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">78h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Signif. &amp; théories ling.</span>
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.signif">Signif. &amp; théories ling.</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">78h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Institution du français</span>
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.institution">Institution du français</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:12.4%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">48h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Linguistique générale</span>
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.general">Linguistique générale</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:6.7%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">26h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);">Autres</span>
+              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.autres">Autres</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:17%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">66h</span>
             </div>
           </div>
         </div>
 
-        <div style="margin-top:3rem;">
-          <div class="col-title">Formation</div>
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-date">2017</div>
-              <div class="tl-role">Doctorat en Linguistique</div>
-              <div class="tl-place">EPHE-PSL, laboratoire SAPRAT</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-date">2013</div>
-              <div class="tl-role">Master 2 Langue française (Recherche) — Très bien</div>
-              <div class="tl-place">Université Paris IV Sorbonne</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-date">2012</div>
-              <div class="tl-role">Master 1 Langue française (Recherche) — Très bien</div>
-              <div class="tl-place">Université Paris IV Sorbonne</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-date">2011</div>
-              <div class="tl-role">Licence — Traduction et Interprétariat</div>
-              <div class="tl-place">Université d'État de Saint-Pétersbourg</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -1163,19 +1196,20 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">03</span>
-      <h2><em>Publications &amp; travaux</em></h2>
+      <h2><em data-i18n="s03.title">Publications &amp; travaux</em></h2>
     </div>
 
     <!-- FILTERS -->
     <div class="pub-controls">
-      <button class="filter-btn active" onclick="filterPubs('all', this)">Tout</button>
-      <button class="filter-btn" onclick="filterPubs('monographie', this)">Monographie</button>
-      <button class="filter-btn" onclick="filterPubs('direction', this)">Directions d'ouvrages</button>
-      <button class="filter-btn" onclick="filterPubs('chapitre', this)">Chapitres</button>
-      <button class="filter-btn" onclick="filterPubs('article', this)">Articles</button>
-      <button class="filter-btn" onclick="filterPubs('actes', this)">Actes</button>
-      <button class="filter-btn" onclick="filterPubs('communication', this)">Communications récentes & à venir</button>
-      <button class="filter-btn" onclick="filterPubs('programme', this)">Programmes soumis</button>
+      <button class="filter-btn active" onclick="filterPubs('all', this)" data-i18n="filter.all">Tout</button>
+      <button class="filter-btn" onclick="filterPubs('monographie', this)" data-i18n="filter.monographie">Monographie</button>
+      <button class="filter-btn" onclick="filterPubs('direction', this)" data-i18n="filter.direction">Directions d'ouvrages</button>
+      <button class="filter-btn" onclick="filterPubs('chapitre', this)" data-i18n="filter.chapitre">Chapitres</button>
+      <button class="filter-btn" onclick="filterPubs('article', this)" data-i18n="filter.article">Articles</button>
+      <button class="filter-btn" onclick="filterPubs('actes', this)" data-i18n="filter.actes">Actes</button>
+      <button class="filter-btn" onclick="filterPubs('communication', this)" data-i18n="filter.communication">Communications</button>
+      <button class="filter-btn" onclick="filterPubs('programme', this)" data-i18n="filter.programme">Programmes</button>
+      <button class="filter-btn" onclick="filterPubs('comptes-rendus', this)" data-i18n="filter.comptes-rendus">Comptes-rendus</button>
     </div>
 
     <!-- PUBLICATION LIST (rendered by JS) -->
@@ -1188,46 +1222,46 @@
   <div class="section-inner">
     <div class="section-header">
       <span class="section-num">04</span>
-      <h2><em>Autres activités</em></h2>
+      <h2><em data-i18n="s04.title">Autres activités</em></h2>
     </div>
     <div class="two-col">
       <div>
-        <div class="col-title">Organisation scientifique</div>
+        <div class="col-title" data-i18n="col.org-sci">Organisation scientifique</div>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-date">06/2025</div>
-            <div class="tl-role">Colloque GenreCorpLing</div>
-            <div class="tl-place">Université Paris Cité — co-organisé avec A. Aleksandrova</div>
+            <div class="tl-role"><a href="https://eda.u-paris.fr/genrecorpuslinguistique-genrecorpsling/" target="_blank" rel="noopener">Colloque GenreCorpLing</a></div>
+            <div class="tl-place" data-i18n="o1.place">Université Paris Cité — co-organisé avec A. Aleksandrova</div>
           </div>
           <div class="tl-item">
             <div class="tl-date">06/2022</div>
-            <div class="tl-role">Colloque DIACHRO X</div>
-            <div class="tl-place">Sorbonne Université — coordinatrice (post)doctorants</div>
+            <div class="tl-role"><a href="https://lettres.sorbonne-universite.fr/evenements/diachro-x" target="_blank" rel="noopener">Colloque DIACHRO X</a></div>
+            <div class="tl-place" data-i18n="o2.place">Sorbonne Université — coordinatrice (post)doctorants</div>
           </div>
           <div class="tl-item">
             <div class="tl-date">2015 — 2018</div>
-            <div class="tl-role">Atelier Reverdie</div>
-            <div class="tl-place">Sorbonne Université — atelier mensuel de langue française médiévale</div>
+            <div class="tl-role" data-i18n="o3.role">Atelier Reverdie</div>
+            <div class="tl-place" data-i18n="o3.place">Sorbonne Université — atelier mensuel de langue française médiévale</div>
           </div>
           <div class="tl-item">
             <div class="tl-date">2016 — 2019</div>
-            <div class="tl-role">Journées d'étude « Rythmes d'évolution »</div>
-            <div class="tl-place">Sorbonne Université / EPHE — 2 éditions organisées</div>
+            <div class="tl-role" data-i18n="o4.role">Journées d'étude « Rythmes d'évolution »</div>
+            <div class="tl-place" data-i18n="o4.place">Sorbonne Université / EPHE — 2 éditions organisées</div>
           </div>
         </div>
-        <div style="margin-top:2rem;">
-          <div class="col-title">Expertises éditoriales</div>
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-date">2024 —</div>
-              <div class="tl-role">Évaluatrice externe</div>
-              <div class="tl-place">Studia Linguistica Romanica (SLR)</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-date">2016 &amp; 2019</div>
-              <div class="tl-role">Direction scientifique d'ouvrages collectifs</div>
-              <div class="tl-place">2 ouvrages, 1 numéro thématique co-dirigés</div>
-            </div>
+      </div>
+      <div>
+        <div class="col-title" data-i18n="col.expertises">Expertises éditoriales</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">2024 —</div>
+            <div class="tl-role" data-i18n="e1.role">Évaluatrice externe</div>
+            <div class="tl-place"><a href="https://studialinguisticaromanica.org" target="_blank" rel="noopener">Studia Linguistica Romanica (SLR)</a></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2016 &amp; 2019</div>
+            <div class="tl-role" data-i18n="e2.role">Direction scientifique d'ouvrages collectifs</div>
+            <div class="tl-place" data-i18n="e2.place">2 ouvrages, 1 numéro thématique co-dirigés</div>
           </div>
         </div>
       </div>
@@ -1241,7 +1275,7 @@
   <div class="footer-links">
     <a href="mailto:zinaida.geylikman@gmail.com">Email</a>
     <a href="https://ephe.academia.edu/ZinaidaGeylikman" target="_blank">Academia.edu</a>
-    <a href="CV_Geylikman.pdf" download>Télécharger le CV</a>
+    <a href="CV_Geylikman.pdf" download data-i18n="nav.cv">↓ Télécharger le CV</a>
   </div>
   <div class="footer-copy">© 2025</div>
 </footer>
@@ -1253,17 +1287,32 @@
 const publications = defaultPubs.map(p => ({...p}));
 let currentFilter = 'all';
 
-const catLabels = {
-  monographie: 'Monographie',
-  direction: 'Directions d\'ouvrages',
-  chapitre: 'Chapitres d\'ouvrages',
-  article: 'Articles dans revues à CL',
-  actes: 'Actes de colloques',
-  communication: 'Communications récentes & à venir',
-  programme: 'Programmes soumis au financement',
+const catLabelsAll = {
+  fr: {
+    monographie: 'Monographie',
+    direction: 'Directions d\'ouvrages',
+    chapitre: 'Chapitres d\'ouvrages',
+    article: 'Articles dans revues à CL',
+    actes: 'Actes de colloques',
+    communication: 'Communications récentes & à venir',
+    programme: 'Programmes soumis au financement',
+    'comptes-rendus': 'Comptes-rendus',
+  },
+  en: {
+    monographie: 'Monograph',
+    direction: 'Edited volumes',
+    chapitre: 'Book chapters',
+    article: 'Peer-reviewed journal articles',
+    actes: 'Conference proceedings',
+    communication: 'Recent & upcoming presentations',
+    programme: 'Research funding applications',
+    'comptes-rendus': 'Book reviews',
+  }
 };
+let currentLang = localStorage.getItem('lang') || 'fr';
+let catLabels = catLabelsAll[currentLang];
 
-const catOrder = ['monographie','direction','chapitre','article','actes','programme','communication'];
+const catOrder = ['monographie','direction','chapitre','article','actes','programme','communication','comptes-rendus'];
 
 function filterPubs(cat, btn) {
   currentFilter = cat;
@@ -1302,12 +1351,19 @@ function renderPubs() {
       li.dataset.id = pub.id;
 
       let doiHtml = pub.doi ? `<a href="https://doi.org/${pub.doi}" target="_blank">↗ DOI</a>` : '';
+      const badgeDefaults = {
+        fr: { prep: 'En préparation', press: 'Sous presse', accepted: 'Accepté', avenir: 'À venir' },
+        en: { prep: 'In preparation', press: 'In press', accepted: 'Accepted', avenir: 'Forthcoming' }
+      };
       let badgesHtml = '';
       if (pub.badges) pub.badges.forEach(b => {
-        const label = pub.badgeLabels && pub.badgeLabels[b] ? pub.badgeLabels[b] : b;
+        const isAward = b === 'award';
+        const label = isAward && pub.badgeLabels && pub.badgeLabels[b]
+          ? pub.badgeLabels[b]
+          : (badgeDefaults[currentLang] && badgeDefaults[currentLang][b]) || b;
         badgesHtml += `<span class="pub-badge badge-${b}">${label}</span>`;
       });
-      if (pub.isNew) badgesHtml += `<span class="pub-badge badge-new">Nouveau</span>`;
+      if (pub.isNew) badgesHtml += `<span class="pub-badge badge-new">${currentLang === 'en' ? 'New' : 'Nouveau'}</span>`;
 
       li.innerHTML = `
         <span class="pub-num">${globalNum}.</span>
@@ -1333,8 +1389,168 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+// ─── I18N ───
+const translations = {
+  fr: {
+    'nav.presentation': 'Présentation', 'nav.parcours': 'Parcours',
+    'nav.publications': 'Publications', 'nav.activites': 'Autres activités',
+    'nav.cv': '↓ Télécharger le CV',
+    'header.label': 'Docteure en Linguistique',
+    'header.subtitle': 'Linguistique historique &amp; sémantique médiévale',
+    'header.loc-label': 'Localisation', 'header.profil-label': 'Profil académique',
+    'header.scroll': 'Défiler',
+    'theme.medieval': 'Français médiéval', 'theme.semantique': 'Sémantique historique',
+    'theme.lexico': 'Lexicologie diachronique', 'theme.pragma': 'Pragmatique historique',
+    'theme.etudes': 'Études médiévales', 'theme.corpus': 'Linguistique de corpus',
+    'theme.gramm': 'Étude de la grammaticalisation',
+    's01.title': 'Présentation',
+    's01.p1': "Mes recherches se situent dans les domaines de la sémantique et la pragmatique historiques du français médiéval, avec un focus sur les noms humains, et, plus généralement, de la diachronie du français et des langues romanes. Au niveau méthodologique, mes travaux adoptent une approche de la linguistique de corpus outillée, y compris assistée par l'IA.",
+    's01.p2': "Mon intérêt envers l'histoire de la langue française est née au cours de mes études de Licence à l'Université d'Etat de Saint-Pétersbourg. Ma thèse, financée par un contrat doctoral et soutenue en 2017 à l'EPHE-PSL, Paris (laboratoire SAPRAT), représentait une <strong>étude sémantique des noms <em>baron</em> et <em>chevalier</em></strong> dans un corpus de textes français du XIIe au XVe siècle. Elle a donné lieu à une monographie publiée chez Honoré Champion, récompensée par le <strong>Prix Bordin 2022</strong> de l'Académie des Inscriptions et Belles-Lettres.",
+    's01.p3': "Mon parcours postdoctoral comprend plusieurs contrats d'enseignement et de recherche dans trois universités françaises. J'ai, en particulier, contribué à trois projets d'humanités numériques : au développement des corpus CoDiF (Corpus de dialogues français XIIIe – XXIe siècle) et <a href=\"https://mrsh.unicaen.fr/coutumiers/conde/accueil.html\" target=\"_blank\" rel=\"noopener\">ConDÉ</a> (Six siècles de coutumiers normands), ainsi qu'à la création du dictionnaire électronique <a href=\"https://dfsm.elan-numerique.fr/\" target=\"_blank\" rel=\"noopener\">DFSM</a> (Dictionnaire du français scientifique médiéval). Par ailleurs, j'ai bénéficié du financement ANR Access ERC Starting 2023.",
+    's01.langues': 'Langues',
+    'lang.russe': 'Russe', 'lang.francais': 'Français', 'lang.anglais': 'Anglais',
+    'lang.italien': 'Italien', 'lang.espagnol': 'Espagnol', 'lang.allemand': 'Allemand',
+    'lang.finnois': 'Finnois', 'lang.latin': 'Latin',
+    'level.native': 'Langue maternelle', 'level.c2': 'C2 · Professionnel', 'level.c1': 'C1 · Avancé',
+    'level.b2': 'B2 · Intermédiaire', 'level.b1': 'B1 · Intermédiaire',
+    'level.a2': 'A2 · Débutant', 'level.a1': 'A1 · Débutant', 'level.lu': 'Lu',
+    'stat.pub': 'Publications (parues &amp; acceptées)', 'stat.comm': 'Communications scientifiques',
+    'stat.ens': "Heures d'enseignement (HETD)", 'stat.postdoc': 'Contrats post-doctoraux',
+    'stat.collab': "Collaborations pour projets d'humanités numériques",
+    'award.text': "<strong>Prix Bordin 2022</strong> Académie des Inscriptions et Belles-Lettres — pour la monographie <em>Baron et chevalier. Une étude sémantique de noms d'humains dans la société féodale</em>, Honoré Champion, 2022.",
+    'outils.title': 'Outils',
+    's02.title': 'Parcours professionnel',
+    'col.recherche': 'Recherche', 'col.enseignement': 'Enseignement',
+    'col.volume': 'Volume horaire par discipline', 'col.formation': 'Formation',
+    'volume.total': 'Total : <strong style="color:var(--ink)">388 HETD</strong>',
+    'r1.role': 'Post-doctorante', 'r1.place': 'Université Paris Cité — URP EDA',
+    'r1.detail': 'ANR Access ERC Starting 2023, projet HumaNs-MF', 'r1.tag': 'Post-doctorat',
+    'r2.role': 'Post-doctorante', 'r2.place': 'Sorbonne Université — STIH',
+    'r2.detail': 'Projet DFSM (Dictionnaire du français scientifique médiéval). Création de notices lexicographiques, encodage XML.', 'r2.tag': 'Post-doctorat',
+    'r3.role': 'Post-doctorante', 'r3.place': 'Université de Caen Normandie — CRISCO',
+    'r3.detail': "Projet RIN CONDÉ. Révision de la lemmatisation et annotation automatiques, coordination d'équipe.", 'r3.tag': 'Post-doctorat',
+    'r4.role': 'Chargée de recherche vacataire', 'r4.place': 'Université Sorbonne Nouvelle — CLESTHIA',
+    'r4.detail': 'Projet CoDiF. Encodage XML-TEI de textes français du XIII<sup>e</sup> au XXI<sup>e</sup> siècle.', 'r4.tag': 'Recherche',
+    'r5.role': 'Doctorante (contrat doctoral)', 'r5.place': 'EPHE-PSL — Laboratoire SAPRAT',
+    'r5.detail': "Thèse sur l'étude sémantique de <em>baron</em> et <em>chevalier</em> (XII<sup>e</sup>–XV<sup>e</sup> siècles). Dir. Joëlle Ducos.", 'r5.tag': 'Doctorat',
+    't1.role': 'ATER (temps plein, 96h)', 't1.place': 'Université de Caen Normandie — UFR HSS', 't1.tag': 'ATER',
+    't2.role': 'Chargée de cours (78h)', 't2.place': 'Sorbonne Université Lettres — UFR Langue française', 't2.tag': 'Chargée de cours',
+    't3.role': 'Chargée de cours (39h)', 't3.place': 'Sorbonne Université Lettres — UFR Langue française', 't3.tag': 'Chargée de cours',
+    't4.role': 'ATER (temps plein, 192h)', 't4.place': 'Sorbonne Université Lettres — UFR Langue française', 't4.tag': 'ATER',
+    't5.role': 'Professeure de FLE', 't5.place': 'Institut français de Saint-Pétersbourg', 't5.tag': 'FLE',
+    't6.role': 'Professeure de FLE', 't6.place': 'Centre de la Langue française (CLF), Saint-Pétersbourg', 't6.tag': 'FLE',
+    'disc.grammaire': 'Grammaire &amp; hist. de la langue', 'disc.ancien': 'Ancien français',
+    'disc.signif': 'Signif. &amp; théories ling.', 'disc.institution': 'Institution du français',
+    'disc.general': 'Linguistique générale', 'disc.autres': 'Autres',
+    'f1.role': 'Doctorat en Linguistique', 'f1.place': 'EPHE-PSL, laboratoire SAPRAT',
+    'f2.role': 'Master 2 Langue française (Recherche) — Très bien', 'f2.place': 'Université Paris IV Sorbonne',
+    'f3.role': 'Master 1 Langue française (Recherche) — Très bien', 'f3.place': 'Université Paris IV Sorbonne',
+    'f4.role': 'Licence — Traduction et Interprétariat', 'f4.place': "Université d'État de Saint-Pétersbourg",
+    's03.title': 'Publications &amp; travaux',
+    'filter.all': 'Tout', 'filter.monographie': 'Monographie', 'filter.direction': "Directions d'ouvrages",
+    'filter.chapitre': 'Chapitres', 'filter.article': 'Articles', 'filter.actes': 'Actes',
+    'filter.communication': 'Communications', 'filter.programme': 'Programmes', 'filter.comptes-rendus': 'Comptes-rendus',
+    's04.title': 'Autres activités',
+    'col.org-sci': 'Organisation scientifique', 'col.expertises': 'Expertises éditoriales',
+    'o1.place': 'Université Paris Cité — co-organisé avec A. Aleksandrova',
+    'o2.place': 'Sorbonne Université — coordinatrice (post)doctorants',
+    'o3.role': 'Atelier Reverdie', 'o3.place': 'Sorbonne Université — atelier mensuel de langue française médiévale',
+    'o4.role': "Journées d'étude « Rythmes d'évolution »", 'o4.place': 'Sorbonne Université / EPHE — 2 éditions organisées',
+    'e1.role': 'Évaluatrice externe',
+    'e2.role': "Direction scientifique d'ouvrages collectifs", 'e2.place': '2 ouvrages, 1 numéro thématique co-dirigés',
+  },
+  en: {
+    'nav.presentation': 'Presentation', 'nav.parcours': 'Career',
+    'nav.publications': 'Publications', 'nav.activites': 'Other Activities',
+    'nav.cv': '↓ Download CV',
+    'header.label': 'PhD in Linguistics',
+    'header.subtitle': 'Historical Linguistics &amp; Medieval Semantics',
+    'header.loc-label': 'Location', 'header.profil-label': 'Academic Profile',
+    'header.scroll': 'Scroll',
+    'theme.medieval': 'Medieval French', 'theme.semantique': 'Historical Semantics',
+    'theme.lexico': 'Diachronic Lexicology', 'theme.pragma': 'Historical Pragmatics',
+    'theme.etudes': 'Medieval Studies', 'theme.corpus': 'Corpus Linguistics',
+    'theme.gramm': 'Grammaticalisation Studies',
+    's01.title': 'Presentation',
+    's01.p1': 'My research focuses on the domains of historical semantics and pragmatics of Medieval French, with a particular focus on human nouns, and, more broadly, on the diachrony of French and Romance languages. Methodologically, my work adopts a computational corpus linguistics approach, including AI-assisted methods.',
+    's01.p2': 'My interest in the history of the French language began during my undergraduate studies at Saint Petersburg State University. My doctoral thesis, funded by a doctoral fellowship and defended in 2017 at EPHE-PSL, Paris (SAPRAT laboratory), was a <strong>semantic study of the nouns <em>baron</em> and <em>chevalier</em></strong> in a corpus of French texts from the 12th to the 15th century. It gave rise to a monograph published by Honoré Champion, awarded the <strong>Prix Bordin 2022</strong> by the Académie des Inscriptions et Belles-Lettres.',
+    's01.p3': 'My postdoctoral career includes several teaching and research contracts at three French universities. I have in particular contributed to three digital humanities projects: the development of the CoDiF corpus (Corpus of French Dialogues, 13th–21st century) and <a href="https://mrsh.unicaen.fr/coutumiers/conde/accueil.html" target="_blank" rel="noopener">ConDÉ</a> (Six centuries of Norman customaries), as well as the creation of the electronic dictionary <a href="https://dfsm.elan-numerique.fr/" target="_blank" rel="noopener">DFSM</a> (Dictionary of Medieval Scientific French). I have also benefited from ANR Access ERC Starting 2023 funding.',
+    's01.langues': 'Languages',
+    'lang.russe': 'Russian', 'lang.francais': 'French', 'lang.anglais': 'English',
+    'lang.italien': 'Italian', 'lang.espagnol': 'Spanish', 'lang.allemand': 'German',
+    'lang.finnois': 'Finnish', 'lang.latin': 'Latin',
+    'level.native': 'Native', 'level.c2': 'Near-native', 'level.c1': 'C1 · Advanced',
+    'level.b2': 'B2 · Intermediate', 'level.b1': 'B1 · Intermediate',
+    'level.a2': 'A2 · Beginner', 'level.a1': 'A1 · Beginner', 'level.lu': 'Reading',
+    'stat.pub': 'Publications (published &amp; accepted)', 'stat.comm': 'Academic presentations',
+    'stat.ens': 'Teaching hours (HETD)', 'stat.postdoc': 'Postdoctoral contracts',
+    'stat.collab': 'Digital humanities project collaborations',
+    'award.text': '<strong>Prix Bordin 2022</strong> Académie des Inscriptions et Belles-Lettres — for the monograph <em>Baron et chevalier. A Semantic Study of Human Nouns in Feudal Society</em>, Honoré Champion, 2022.',
+    'outils.title': 'Tools',
+    's02.title': 'Professional Career',
+    'col.recherche': 'Research', 'col.enseignement': 'Teaching',
+    'col.volume': 'Teaching hours by discipline', 'col.formation': 'Education',
+    'volume.total': 'Total: <strong style="color:var(--ink)">388 HETD</strong>',
+    'r1.role': 'Postdoctoral researcher', 'r1.place': 'Université Paris Cité — URP EDA',
+    'r1.detail': 'ANR Access ERC Starting 2023, HumaNs-MF project', 'r1.tag': 'Postdoc',
+    'r2.role': 'Postdoctoral researcher', 'r2.place': 'Sorbonne Université — STIH',
+    'r2.detail': 'DFSM project (Dictionary of Medieval Scientific French). Creation of lexicographic entries, XML encoding.', 'r2.tag': 'Postdoc',
+    'r3.role': 'Postdoctoral researcher', 'r3.place': 'Université de Caen Normandie — CRISCO',
+    'r3.detail': 'RIN CONDÉ project. Revision of automatic lemmatisation and annotation, team coordination.', 'r3.tag': 'Postdoc',
+    'r4.role': 'Research associate (freelance)', 'r4.place': 'Université Sorbonne Nouvelle — CLESTHIA',
+    'r4.detail': 'CoDiF project. XML-TEI encoding of French texts from the 13<sup>th</sup> to the 21<sup>st</sup> century.', 'r4.tag': 'Research',
+    'r5.role': 'PhD student (doctoral fellowship)', 'r5.place': 'EPHE-PSL — Laboratoire SAPRAT',
+    'r5.detail': 'Thesis on the semantic study of <em>baron</em> and <em>chevalier</em> (12<sup>th</sup>–15<sup>th</sup> centuries). Supervisor: Joëlle Ducos.', 'r5.tag': 'PhD',
+    't1.role': 'ATER — Teaching & Research Fellow (full-time, 96h)', 't1.place': 'Université de Caen Normandie — UFR HSS', 't1.tag': 'ATER',
+    't2.role': 'Lecturer (78h)', 't2.place': 'Sorbonne Université Lettres — UFR Langue française', 't2.tag': 'Lecturer',
+    't3.role': 'Lecturer (39h)', 't3.place': 'Sorbonne Université Lettres — UFR Langue française', 't3.tag': 'Lecturer',
+    't4.role': 'ATER — Teaching & Research Fellow (full-time, 192h)', 't4.place': 'Sorbonne Université Lettres — UFR Langue française', 't4.tag': 'ATER',
+    't5.role': 'French as Foreign Language Teacher', 't5.place': 'Institut français de Saint-Pétersbourg', 't5.tag': 'FFL',
+    't6.role': 'French as Foreign Language Teacher', 't6.place': 'Centre de la Langue française (CLF), Saint-Pétersbourg', 't6.tag': 'FFL',
+    'disc.grammaire': 'Grammar &amp; history of the language', 'disc.ancien': 'Old French',
+    'disc.signif': 'Meaning &amp; linguistic theories', 'disc.institution': 'History of French as an institution',
+    'disc.general': 'General linguistics', 'disc.autres': 'Other',
+    'f1.role': 'PhD in Linguistics', 'f1.place': 'EPHE-PSL, Laboratoire SAPRAT',
+    'f2.role': 'MA2 French Language (Research) — with distinction', 'f2.place': 'Université Paris IV Sorbonne',
+    'f3.role': 'MA1 French Language (Research) — with distinction', 'f3.place': 'Université Paris IV Sorbonne',
+    'f4.role': 'BA — Translation and Interpreting', 'f4.place': 'Saint Petersburg State University',
+    's03.title': 'Publications &amp; Works',
+    'filter.all': 'All', 'filter.monographie': 'Monograph', 'filter.direction': 'Edited volumes',
+    'filter.chapitre': 'Chapters', 'filter.article': 'Articles', 'filter.actes': 'Proceedings',
+    'filter.communication': 'Talks', 'filter.programme': 'Research programmes', 'filter.comptes-rendus': 'Book reviews',
+    's04.title': 'Other Activities',
+    'col.org-sci': 'Scientific Organisation', 'col.expertises': 'Editorial Expertise',
+    'o1.place': 'Université Paris Cité — co-organised with A. Aleksandrova',
+    'o2.place': 'Sorbonne Université — coordinator for (post)doctoral participants',
+    'o3.role': 'Reverdie Seminar', 'o3.place': 'Sorbonne Université — monthly seminar on Medieval French language',
+    'o4.role': "Study days \"Rythmes d'évolution\"", 'o4.place': 'Sorbonne Université / EPHE — 2 editions organised',
+    'e1.role': 'External reviewer',
+    'e2.role': 'Scientific editing of collective volumes', 'e2.place': '2 volumes, 1 thematic issue co-edited',
+  }
+};
+
+function applyLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (translations[lang] && translations[lang][key] !== undefined) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+  catLabels = catLabelsAll[lang];
+  renderPubs();
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  applyLang(lang);
+}
+
 // ─── INIT ───
 renderPubs();
+applyLang(currentLang);
 </script>
 </body>
 </html>
