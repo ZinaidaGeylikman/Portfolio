@@ -860,12 +860,55 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
-    .synth-grid, .two-col { grid-template-columns: 1fr; gap: 2rem; }
+    /* Navigation */
     .nav-links { display: none; }
-    h1 { font-size: 3rem; }
-    .header-meta { gap: 1.2rem; }
+    .nav-dl { display: none; }
+
+    /* Header */
+    .header-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 5rem 5vw 3rem;
+    }
+    .header-photo { width: 150px; height: 150px; }
+    .header-label { justify-content: center; }
+    h1 { font-size: 2.4rem; }
+    .header-title { font-size: 1.1rem; margin-bottom: 1.5rem; }
+    .header-meta {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+    }
+    .header-themes { justify-content: center; }
+
+    /* Sections */
+    section { padding: 3.5rem 5vw; }
+    .section-full { padding: 3.5rem 5vw; }
+    .synth-grid, .two-col { grid-template-columns: 1fr; gap: 2rem; }
     .form-row { grid-template-columns: 1fr; }
-    footer { flex-direction: column; align-items: flex-start; }
+
+    /* Languages table */
+    .lang-row { gap: 0.75rem; }
+    .lang-name { width: 90px; font-size: 1rem; }
+    .lang-bar-wrap { max-width: 80px; }
+    .lang-level { width: auto; font-size: 0.72rem; }
+
+    /* Volume horaire bars */
+    .vol-label { width: 140px !important; font-size: 0.72rem !important; }
+
+    /* Stats */
+    .synth-stats { flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+    .stat-block { flex: 1 1 calc(50% - 0.5rem); min-width: 130px; }
+
+    /* Publications filter */
+    .pub-controls { gap: 0.4rem; }
+    .filter-btn { font-size: 0.58rem; padding: 0.35rem 0.6rem; }
+
+    /* Footer */
+    footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
   }
 </style>
 </head>
@@ -1155,32 +1198,32 @@
           <div style="margin-bottom:1.5rem;font-size:1rem;color:var(--ink-light);" data-i18n="volume.total">Total : <strong style="color:var(--ink)">388 HETD</strong></div>
           <div style="display:flex;flex-direction:column;gap:0.6rem;">
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.grammaire">Grammaire &amp; hist. de la langue</span>
+              <span class="vol-label" style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.grammaire">Grammaire &amp; hist. de la langue</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:23.7%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">92h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.ancien">Ancien français</span>
+              <span class="vol-label" style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.ancien">Ancien français</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">78h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.signif">Signif. &amp; théories ling.</span>
+              <span class="vol-label" style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.signif">Signif. &amp; théories ling.</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:20.1%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">78h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.institution">Institution du français</span>
+              <span class="vol-label" style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.institution">Institution du français</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:12.4%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">48h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.general">Linguistique générale</span>
+              <span class="vol-label" style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.general">Linguistique générale</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:6.7%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">26h</span>
             </div>
             <div style="display:flex;align-items:center;gap:1rem;">
-              <span style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.autres">Autres</span>
+              <span class="vol-label" style="font-family:var(--mono);font-size:0.8rem;width:220px;color:var(--ink-light);" data-i18n="disc.autres">Autres</span>
               <div style="flex:1;height:6px;background:var(--border-light);"><div style="height:100%;background:var(--accent);width:17%"></div></div>
               <span style="font-family:var(--mono);font-size:0.78rem;color:var(--gold);">66h</span>
             </div>
