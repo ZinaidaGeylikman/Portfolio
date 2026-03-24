@@ -858,11 +858,44 @@
     font-size: 0.75rem;
   }
 
+  /* ─── HAMBURGER ─── */
+  .nav-hamburger { display: none; }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     /* Navigation */
-    .nav-links { display: none; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 58px; left: 0; right: 0;
+      background: rgba(240,244,248,0.98);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 1.2rem 6vw;
+      gap: 1rem;
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { list-style: none; }
+    .nav-links a { font-size: 0.85rem; }
     .nav-dl { display: none; }
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: auto;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+    }
 
     /* Header */
     .header-inner {
@@ -884,8 +917,8 @@
     .header-themes { justify-content: center; }
 
     /* Sections */
-    section { padding: 3.5rem 5vw; }
-    .section-full { padding: 3.5rem 5vw; }
+    section { padding: 3.5rem 7vw; }
+    .section-full { padding: 3.5rem 7vw; }
     .synth-grid, .two-col { grid-template-columns: 1fr; gap: 2rem; }
     .form-row { grid-template-columns: 1fr; }
 
@@ -924,6 +957,9 @@
     <li><a href="#enseignement" data-i18n="nav.activites">Autres activités</a></li>
   </ul>
   <a href="CV_Geylikman.pdf" download class="nav-dl" data-i18n="nav.cv">↓ Télécharger le CV</a>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
   <div class="lang-toggle">
     <button onclick="setLang('fr')" id="btn-fr" class="lang-btn active">FR</button>
     <span class="lang-sep">|</span>
@@ -1587,6 +1623,10 @@ function applyLang(lang) {
   document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
+
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
 
 function setLang(lang) {
   currentLang = lang;
