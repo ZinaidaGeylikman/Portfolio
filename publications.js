@@ -22,10 +22,11 @@ const defaultPubs = [
   { id:1, cat:'monographie', authors:'Geylikman Z.', year:'2022', title:'Baron et chevalier. Une étude sémantique de noms d\'humains dans la société féodale', ref:'Paris, Honoré Champion.', doi:'', badges:['award'], badgeLabels:{award:'Prix Bordin 2022'} },
 
   // DIRECTION
+  { id:4, cat:'direction', authors:'Paccosi T., Geylikman Z., Passarotti M., Bozia E. (eds.)', year:'en prép.', title:'Open Data for Quantitative Diachronic Linguistics', ref:'<a href="https://openhumanitiesdata.metajnl.com/collections/Quantitative-Diachronic" target="_blank">Journal of Open Humanities Data.</a>', doi:'', badges:['prep'] },
+  { id:30, cat:'direction', authors:'Geylikman Z., Aleksandrova A. (eds.)', year:'en prép.', title:'Le genre discursif aux temps des corpus : diversité d\'approches, unité d\'enjeu', ref:'<a href="https://studialinguisticaromanica.org" target="_blank">Studia Linguistica Romanica.</a>', doi:'', badges:['prep'] },
   { id:2, cat:'direction', authors:'Geylikman Z. & Lambert P. (éds.)', year:'2016', title:'Rythmes d\'évolution en français médiéval. Observations d\'après quelques textes littéraires', ref:'Paris, L\'Harmattan.', doi:'' },
   { id:3, cat:'direction', authors:'Boudes Y., Geylikman Z., Lambert P. & Sanchez A. (éds.)', year:'2019', title:'Rythmes d\'évolution en français médiéval. Observations d\'après quelques textes de savoir', ref:'Paris, L\'Harmattan.', doi:'' },
-  { id:4, cat:'direction', authors:'Paccosi T., Geylikman Z., Passarotti M., Bozia E. (eds.)', year:'en prép.', title:'Open Data for Quantitative Diachronic Linguistics', ref:'<a href="https://openhumanitiesdata.metajnl.com/collections/Quantitative-Diachronic" target="_blank">Journal of Open Humanities Data.</a>', doi:'', badges:['prep'] },
-
+ 
   // CHAPITRES
   { id:5, cat:'chapitre', authors:'Geylikman Z. & Parussa G.', year:'en prép.', title:'L\'évolution du système d\'adresse dans la diachronie du français : pronoms et termes d\'adresse', ref:'Dans un volume sur la pragmatique historique du français. Paris, Honoré Champion.', doi:'', badges:['prep'] },
   { id:6, cat:'chapitre', authors:'Geylikman Z.', year:'accepté', title:'Stop talking as a bourgeois, you are a nobleman: people-related stereotyped comparisons in Medieval French (9th-15th century)', ref:'Dans <em>Negotiating Norms: Generics and stereotypes across contexts</em>, De Gruyter Mouton.', doi:'', badges:['accepted'] },
@@ -55,7 +56,7 @@ const defaultPubs = [
   // COMMUNICATIONS (sélection des plus récentes)
   { id:27, cat:'communication', authors:'Geylikman Z.', year:'2026', title:'Modeling human nouns\' lexicon in diachrony: a methodological essay', ref:'Lexiques/Lexicon/Lexik, ATILF, Nancy, France, décembre 2026.', doi:'', badges:['avenir'], badgeLabels:{avenir:'à venir'} },
   { id:29, cat:'communication', authors:'Geylikman Z., Ducos J., Vigneron F.', year:'2026', title:'Conceptualising science in medieval terms: the case of vertu in the Dictionnaire du Français Scientifique Médiéval', ref:'16th International Conference on Historical Lexicography and Lexicology, Université Caen-Normandie, France, juin 2026.', doi:'', badges:['avenir'], badgeLabels:{avenir:'à venir'} },
-  { id:26, cat:'communication', authors:'Geylikman Z.', year:'2026', title:'Stabilité sémantique en diachronie : le cas des noms d\'humain en français médiéval', ref:'DIACHRO VI, Université Sorbonne Nouvelle, juin 2026.', doi:'', badges:['avenir'], badgeLabels:{avenir:'à venir'} },
+  { id:26, cat:'communication', authors:'Geylikman Z.', year:'2026', title:'Stabilité sémantique en diachronie : le cas des noms d\'humain en français médiéval', ref:'DIACHRO XII, Université Sorbonne Nouvelle, juin 2026.', doi:'', badges:['avenir'], badgeLabels:{avenir:'à venir'} },
   { id:20, cat:'communication', authors:'Geylikman Z.', year:'2026', title:'Counting butterflies\' matters: lexical frequencies and agency of power. The case of human nouns in Medieval French', ref:'Quantitative Diachronic Linguistics and Cultural Analytics, King\'s College London, 15-16 janv. 2026.', doi:'' },
   { id:21, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'Stop talking as a bourgeois, you are a nobleman: people-related stereotyped comparisons in Medieval French', ref:'Generics and stereotypes, Leiden University, 5-6 juin 2025.', doi:'' },
   { id:24, cat:'communication', authors:'Geylikman Z.', year:'2025', title:'La norme d\'adresse et sa transgression dans quelques textes en français médiéval', ref:'Séminaire de Master de G. Parussa (invitation).', doi:'' },
