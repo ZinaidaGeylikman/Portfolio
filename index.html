@@ -1431,6 +1431,8 @@ function renderPubs() {
       li.dataset.id = pub.id;
 
       let doiHtml = pub.doi ? `<a href="https://doi.org/${pub.doi}" target="_blank">↗ DOI</a>` : '';
+      const yearMap = { 'accepté': 'accepted', 'en prép.': 'in prep.', 'en préparation': 'in preparation', 'à paraître': 'in press', 'à venir': 'forthcoming' };
+      const displayYear = currentLang === 'en' && yearMap[pub.year] ? yearMap[pub.year] : pub.year;
       const badgeDefaults = {
         fr: { prep: 'En préparation', press: 'Sous presse', accepted: 'Accepté', avenir: 'À venir' },
         en: { prep: 'In preparation', press: 'In press', accepted: 'Accepted', avenir: 'Forthcoming' }
@@ -1449,7 +1451,7 @@ function renderPubs() {
         <span class="pub-num">${globalNum}.</span>
         <div class="pub-content">
           <div class="pub-title">${pub.title}</div>
-          <div class="pub-ref">${pub.authors} (${pub.year}) — ${pub.ref} ${doiHtml}</div>
+          <div class="pub-ref">${pub.authors} (${displayYear}) — ${pub.ref} ${doiHtml}</div>
           ${badgesHtml ? `<div class="pub-badges">${badgesHtml}</div>` : ''}
         </div>
       `;
@@ -1485,9 +1487,9 @@ const translations = {
     'theme.gramm': 'Étude de la grammaticalisation',
     's01.title': 'Présentation',
     's01.p1': "En tant que chercheuse, je m'intéresse au sens dans le langage et son interdépendance avec les facteurs extralinguistiques : le type de discours, le but pragmatique, le changement social.",
-    's01.p2': "Mes recherches se situent dans les domaines de la sémantique et la pragmatique historiques du français médiéval et, plus généralement, de la diachronie du français et des langues romanes. Au niveau méthodologique, mes travaux adoptent une approche de la linguistique de corpus outillée, y compris assistée par l'IA.",
+    's01.p2': "Mes recherches se situent dans les domaines de la sémantique et pragmatique historiques du français médiéval et, plus généralement, de la diachronie du français et des langues romanes. Au niveau méthodologique, mes travaux adoptent une approche de la linguistique de corpus outillée, y compris assistée par l'IA.",
     's01.p3': "Mon intérêt envers l'histoire de la langue française est née au cours de mes études de Licence à l'Université d'Etat de Saint-Pétersbourg. Ma thèse, financée par un contrat doctoral et soutenue en 2017 à l'EPHE-PSL, Paris (laboratoire SAPRAT), représentait une <strong>étude sémantique des noms <em>baron</em> et <em>chevalier</em></strong> dans un corpus de textes français du XIIe au XVe siècle. Elle a donné lieu à une monographie publiée chez Honoré Champion, récompensée par le <strong>Prix Bordin 2022</strong> de l'Académie des Inscriptions et Belles-Lettres.",
-    's01.p4': "Mon parcours postdoctoral comprend plusieurs contrats d'enseignement et de recherche dans trois universités françaises. J'ai, en particulier, contribué à trois projets d'humanités numériques : au développement des corpus CoDiF (Corpus de dialogues français XIIIe – XXIe siècle) et <a href=\"https://mrsh.unicaen.fr/coutumiers/conde/accueil.html\" target=\"_blank\" rel=\"noopener\">ConDÉ</a> (Six siècles de coutumiers normands), ainsi qu'à la création du dictionnaire électronique <a href=\"https://dfsm.elan-numerique.fr/\" target=\"_blank\" rel=\"noopener\">DFSM</a> (Dictionnaire du français scientifique médiéval). Par ailleurs, j'ai bénéficié du financement ANR Access ERC Starting 2023.",
+    's01.p4': "Mon expérience d'enseignement comprend une vaste palette de disciplines dans les domaines des sciences du langage et de la diachronie du français. J'ai également contribué à trois projets d'humanités numériques : les corpus CoDiF (Corpus de dialogues français XIIIe – XXIe siècle) et <a href=\"https://mrsh.unicaen.fr/coutumiers/conde/accueil.html\" target=\"_blank\" rel=\"noopener\">ConDÉ</a> (Six siècles de coutumiers normands), ainsi que le dictionnaire électronique <a href=\"https://dfsm.elan-numerique.fr/\" target=\"_blank\" rel=\"noopener\">DFSM</a> (Dictionnaire du français scientifique médiéval). Enfin, j'ai été porteuse du financement ANR Access ERC Starting 2023 avec le projet HumaNs-MF.",
     's01.langues': 'Langues',
     'lang.russe': 'Russe', 'lang.francais': 'Français', 'lang.anglais': 'Anglais',
     'lang.italien': 'Italien', 'lang.espagnol': 'Espagnol', 'lang.allemand': 'Allemand',
@@ -1554,9 +1556,9 @@ const translations = {
     'theme.gramm': 'Grammaticalisation Studies',
     's01.title': 'Presentation',
     's01.p1': 'As a researcher, I am interested in meaning in language and its interdependence with extralinguistic factors: discourse type, pragmatic purpose, and social change.',
-    's01.p2': 'My research focuses on the domains of historical semantics and pragmatics of Medieval French and, more broadly, on the diachrony of French and Romance languages. Methodologically, my work adopts a computational corpus linguistics approach, including AI-assisted methods.',
+    's01.p2': 'My research focuses on the domains of historical semantics and pragmatics of Medieval French and, more broadly, on French and Romance diachrony. Methodologically, my work adopts a computational corpus linguistics approach, including AI-assisted methods.',
     's01.p3': 'My interest in the history of the French language began during my undergraduate studies at Saint Petersburg State University. My doctoral thesis, funded by a doctoral fellowship and defended in 2017 at EPHE-PSL, Paris (SAPRAT laboratory), was a <strong>semantic study of the nouns <em>baron</em> and <em>chevalier</em></strong> in a corpus of French texts from the 12th to the 15th century. It gave rise to a monograph published by Honoré Champion, awarded the <strong>Prix Bordin 2022</strong> by the Académie des Inscriptions et Belles-Lettres.',
-    's01.p4': 'My postdoctoral career includes several teaching and research contracts at three French universities. I have in particular contributed to three digital humanities projects: the development of the CoDiF corpus (Corpus of French Dialogues, 13th–21st century) and <a href="https://mrsh.unicaen.fr/coutumiers/conde/accueil.html" target="_blank" rel="noopener">ConDÉ</a> (Six centuries of Norman customaries), as well as the creation of the electronic dictionary <a href="https://dfsm.elan-numerique.fr/" target="_blank" rel="noopener">DFSM</a> (Dictionary of Medieval Scientific French). I have also benefited from ANR Access ERC Starting 2023 funding.',
+    's01.p4': 'My teaching experience covers a wide range of disciplines in linguistics and French diachrony. I have also contributed to three digital humanities projects: the CoDiF corpus (Corpus of French Dialogues, 13th–21st century) and <a href="https://mrsh.unicaen.fr/coutumiers/conde/accueil.html" target="_blank" rel="noopener">ConDÉ</a> (Six centuries of Norman customaries), as well as the electronic dictionary <a href="https://dfsm.elan-numerique.fr/" target="_blank" rel="noopener">DFSM</a> (Dictionary of Medieval Scientific French). Finally, I have been awarded ANR Access ERC Starting 2023 funding with the HumaNs-MF project.',
     's01.langues': 'Languages',
     'lang.russe': 'Russian', 'lang.francais': 'French', 'lang.anglais': 'English',
     'lang.italien': 'Italian', 'lang.espagnol': 'Spanish', 'lang.allemand': 'German',
